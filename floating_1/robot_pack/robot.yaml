@@ -1,4 +1,4 @@
-# 플로팅 헤드 1800 · 헤드 1 (motion_id 1-1..1-5 · 애니메이션 파일 id 와 동일)
+# 플로팅 로봇 1 · 1800 · motion_id 1-1..1-5 (애니메이션 파일 id 와 동일)
 # 축 · 제어기함 pptx slide4 (slave 0..4 순서) · 모델 · floating_1800/sim/fh_1800_wires_R011.xml
 # drive · 플로팅 PC 모터 설정 = 플랫폼 기본값 (사용자 확인 2026-10-02) · 모터축 deg/s, deg/s²
 axes:
