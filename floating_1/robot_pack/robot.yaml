@@ -13,4 +13,4 @@ env:
   settle_s: 10
   torsion_k: 500
   torsion_c: 150
-  camera: {lookat: [0.0, -0.2, 3.5], distance: 5.5, azimuth: -60, elevation: -5}
+  camera: {lookat: [0.0, -0.2, 3.5], distance: 5.5, azimuth: 90, elevation: -5}
