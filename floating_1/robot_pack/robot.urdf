@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot name="floating_head_1800">
+  <!-- generated: mass from CAD volumes + face 180 kg / eyes 20 kg shells; frames = Blender rig frame (z-up, m) -->
+  <link name="base">
+    <inertial><origin xyz="0.00192465 0.00416315 0.553989" rpy="0 0 0"/><mass value="26.2499"/>
+      <inertia ixx="2.05697" ixy="0.000150812" ixz="-0.000487465" iyy="2.09189" iyz="0.0266854" izz="0.202685"/></inertial>
+    <visual><origin xyz="-0 -0 -0" rpy="0 0 0"/><geometry><mesh filename="meshes/base_0.stl"/></geometry></visual>
+  </link>
+  <link name="yaw">
+    <inertial><origin xyz="0.00045566 0.00656782 -0.127792" rpy="0 0 0"/><mass value="20.7242"/>
+      <inertia ixx="0.381776" ixy="-5.87744e-05" ixz="-0.00118726" iyy="0.637848" iyz="0.031012" izz="0.344314"/></inertial>
+    <visual><origin xyz="-0 -0 -0.3103" rpy="0 0 0"/><geometry><mesh filename="meshes/yaw_0.stl"/></geometry></visual>
+  </link>
+  <link name="pitch">
+    <inertial><origin xyz="-0.000346111 0.0305664 0.0707224" rpy="0 0 0"/><mass value="260.8240"/>
+      <inertia ixx="78.6055" ixy="0.0224636" ixz="0.00669588" iyy="72.2324" iyz="-6.75722" izz="62.0101"/></inertial>
+    <visual><origin xyz="-0 -0 -0.1688" rpy="0 0 0"/><geometry><mesh filename="meshes/pitch_0.stl"/></geometry></visual>
+  </link>
+  <link name="eye_pitch">
+    <inertial><origin xyz="1.44404e-17 -0.0313347 0.119864" rpy="0 0 0"/><mass value="0.4805"/>
+      <inertia ixx="0.000144385" ixy="6.46589e-10" ixz="5.35339e-11" iyy="0.013183" iyz="8.57782e-06" izz="0.0130801"/></inertial>
+    <visual><origin xyz="-0 0.3231 -0.1571" rpy="0 0 0"/><geometry><mesh filename="meshes/eye_pitch_0.stl"/></geometry></visual>
+  </link>
+  <link name="eye_yaw_l">
+    <inertial><origin xyz="0.0124429 -0.10359 -0.0691792" rpy="0 0 0"/><mass value="20.3657"/>
+      <inertia ixx="0.113899" ixy="-0.0098111" ixz="-0.00653793" iyy="0.211567" iyz="0.0237342" izz="0.190243"/></inertial>
+    <visual><origin xyz="-0.2625 0.3231 -0.1571" rpy="0 0 0"/><geometry><mesh filename="meshes/eye_yaw_l_0.stl"/></geometry></visual>
+  </link>
+  <link name="eye_yaw_r">
+    <inertial><origin xyz="-0.0124056 -0.103279 -0.068988" rpy="0 0 0"/><mass value="20.4744"/>
+      <inertia ixx="0.11444" ixy="0.00975694" ixz="0.00652101" iyy="0.211729" iyz="0.0234956" izz="0.190642"/></inertial>
+    <visual><origin xyz="0.2625 0.3231 -0.1571" rpy="0 0 0"/><geometry><mesh filename="meshes/eye_yaw_r_0.stl"/></geometry></visual>
+  </link>
+  <joint name="neck_yaw" type="revolute">
+    <parent link="base"/><child link="yaw"/>
+    <origin xyz="0 0 0.3103" rpy="0 0 0"/><axis xyz="0 0 1"/>
+    <limit lower="-0.26180" upper="0.26180" effort="644.4" velocity="0.3840"/>
+  </joint>
+  <joint name="neck_pitch" type="revolute">
+    <parent link="yaw"/><child link="pitch"/>
+    <origin xyz="0 0 -0.1415" rpy="0 0 0"/><axis xyz="-1 0 0"/>
+    <limit lower="-0.17453" upper="0.22689" effort="966.6" velocity="0.2560"/>
+  </joint>
+  <joint name="eye_pitch" type="revolute">
+    <parent link="pitch"/><child link="eye_pitch"/>
+    <origin xyz="0 -0.3231 -0.0117" rpy="0 0 0"/><axis xyz="-1 0 0"/>
+    <limit lower="-0.17453" upper="0.17453" effort="42.8" velocity="0.7679"/>
+  </joint>
+  <joint name="eye_yaw_l" type="revolute">
+    <parent link="eye_pitch"/><child link="eye_yaw_l"/>
+    <origin xyz="0.2625 0 0" rpy="0 0 0"/><axis xyz="0 -0.559215 0.829023"/>
+    <limit lower="-0.20944" upper="0.20944" effort="15.1" velocity="1.0971"/>
+  </joint>
+  <joint name="eye_yaw_r" type="revolute">
+    <parent link="eye_pitch"/><child link="eye_yaw_r"/>
+    <origin xyz="-0.2625 0 0" rpy="0 0 0"/><axis xyz="0 -0.559215 0.829023"/>
+    <limit lower="-0.20944" upper="0.20944" effort="15.1" velocity="1.0971"/>
+  </joint>
+</robot>
