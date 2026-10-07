@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot name="floating_head_1800">
-  <!-- generated: mass from CAD volumes + face 180 kg / eyes 20 kg shells; frames = Blender rig frame (z-up, m) -->
+  <!-- generated: mass from CAD volumes + face 245 kg (180 + sphere 65) / eyes 20 kg shells; frames = Blender rig frame (z-up, m) -->
   <link name="base">
     <inertial><origin xyz="0.00192465 0.00416315 0.553989" rpy="0 0 0"/><mass value="26.2499"/>
       <inertia ixx="2.05697" ixy="0.000150812" ixz="-0.000487465" iyy="2.09189" iyz="0.0266854" izz="0.202685"/></inertial>
@@ -12,8 +12,8 @@
     <visual><origin xyz="-0 -0 -0.3103" rpy="0 0 0"/><geometry><mesh filename="meshes/yaw_0.stl"/></geometry></visual>
   </link>
   <link name="pitch">
-    <inertial><origin xyz="-0.000346111 0.0305664 0.0707224" rpy="0 0 0"/><mass value="260.8240"/>
-      <inertia ixx="78.6055" ixy="0.0224636" ixz="0.00669588" iyy="72.2324" iyz="-6.75722" izz="62.0101"/></inertial>
+    <inertial><origin xyz="-0.000254265 0.029543 0.0742142" rpy="0 0 0"/><mass value="325.8240"/>
+      <inertia ixx="103.939" ixy="0.0198364" ixz="0.00615881" iyy="95.7263" iyz="-8.90434" izz="81.4778"/></inertial>
     <visual><origin xyz="-0 -0 -0.1688" rpy="0 0 0"/><geometry><mesh filename="meshes/pitch_0.stl"/></geometry></visual>
   </link>
   <link name="eye_pitch">
