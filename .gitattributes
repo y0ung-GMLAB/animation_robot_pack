@@ -3,3 +3,5 @@
 *.xml  text eol=lf
 *.urdf text eol=lf
 *.stl  binary
+*.glb  binary
+*.wav  binary
