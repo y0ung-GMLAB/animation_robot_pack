@@ -6,6 +6,7 @@
 ```
 <공연>/                      → 여러 로봇이 같이 쓰는 공연 하나 = 폴더 하나 (예: floating_narration_all)
   <공연>.json               → 웹 · 애니메이션 재생 화면에 드래그 (모든 로봇 공통 · 로봇마다 자기 motion_id 만 씀)
+  <공연>.wav                → 스피커 PC 웹(:8100) · 음원 업로드 · 「애니메이션별 음원」 에서 <공연> 에 연결
   robot_pack_<N>/           → N번 로봇 PC 의 웹 · 시스템 정보 → 로봇 팩에 폴더째 드래그 (PC 전역 · 교체)
 <로봇>/animations/*.json     → 한 로봇 전용 테스트 애니메이션 (예: floating_1)
 ```
@@ -23,6 +24,7 @@
 
 - 플로팅 4대 나레이션 공연 (556 s) · 애니메이션 하나에 조인트 20개 (`f{N}_neck_yaw` …)
 - `floating_narration_all.json` · 4대 공통 (각 PC 는 자기 `f{N}_*` 만 씀) · 패널 토크쇼식 대화 (KO 질문자 · DE/FR/ES 답변) · 속도 상한 = 사용자 속도 테스트 (고개 좌우 9 °/s · 14 °/s² · 상하 6 · 10 · 눈 10 · 22)
+- `floating_narration_all.wav` · 스피커 음원 (556.0 s · 애니메이션 556.02 s 와 같음 · 모노 24 kHz 16 bit · 원본 `floating/speaker_narration.wav`) · **스피커 PC 웹 `http://<스피커 IP>:8100` → 음원 업로드** → 「애니메이션별 음원」 표에서 `floating_narration_all` 에 이 음원 (처음 올린 음원이 기본 음원) · 로봇 PC 에는 안 올림
 - `robot_pack_1` ~ `4` · 4대 모두 1800 모델 기준 (사이즈 다른 로봇이면 그 팩만 교체) · 내용 같음 · `robot.yaml` 의 `motion_id` 접두어 (`f1_` … `f4_`) · `pack.yaml` name 만 다름
 - `scene.glb` (웹 「Blender 뷰」) · 헤드 4대만 (매장 없음 · 얼굴 25 % 로 줄임 · 텍스처 1024 · 홍채는 이미지로 구움) + 나레이션 애니메이션 556 s · 29 MB · 4개 팩에 같은 파일 · **애니메이션 고치면 다시 만들어야 함**
 - 모델 · `floating/floating_1800/sim/fh_1800_wires_R011.xml` (천장 원판 3점 수직 와이어)

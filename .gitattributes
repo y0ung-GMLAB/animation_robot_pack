@@ -4,3 +4,4 @@
 *.urdf text eol=lf
 *.stl  binary
 *.glb  binary
+*.wav  binary
