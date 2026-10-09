@@ -1,0 +1,94 @@
+<mujoco model="floating_head_1800_wires_R011">
+  <compiler angle="radian" meshdir="meshes"/>
+  <option timestep="0.0002" gravity="0 0 -9.81" integrator="implicitfast"/>
+  <visual><global offwidth="1280" offheight="960"/></visual>
+  <asset><mesh name="m_base_0" file="base_0.stl"/><mesh name="m_yaw_0" file="yaw_0.stl"/><mesh name="m_pitch_0" file="pitch_0.stl"/><mesh name="m_eye_pitch_0" file="eye_pitch_0.stl"/><mesh name="m_eye_yaw_l_0" file="eye_yaw_l_0.stl"/><mesh name="m_eye_yaw_r_0" file="eye_yaw_r_0.stl"/><mesh name="m_eyeball_l_0" file="eyeball_l_0.stl"/><mesh name="m_eyeball_r_0" file="eyeball_r_0.stl"/></asset>
+  <default><geom contype="0" conaffinity="0" density="0"/></default>
+  <worldbody>
+    <light pos="0 -3 9" dir="0 0.3 -1"/>
+    <geom name="floor" type="plane" size="6 6 0.1" rgba="0.6 0.6 0.6 1"/>
+    <geom name="beam" type="box" pos="0 0 7.4460" size="2 0.3 0.15" rgba="0.8 0.8 0.8 1"/>
+    <site name="ceil0" pos="6.73556e-18 0.11 7.296" size="0.02"/>
+    <site name="ceil1" pos="-0.0952628 -0.055 7.296" size="0.02"/>
+    <site name="ceil2" pos="0.0952628 -0.055 7.296" size="0.02"/>
+    <body name="base" pos="0 0 3.2834">
+      <inertial pos="0.00192465 0.00416315 0.553989" mass="26.2499" fullinertia="2.05697 2.09189 0.202685 0.000150812 -0.000487465 0.0266854"/>
+      <freejoint name="suspension"/>
+      <site name="plate0" pos="6.73556e-18 0.11 1.1658" size="0.02"/>
+      <site name="plate1" pos="-0.0952628 -0.055 1.1658" size="0.02"/>
+      <site name="plate2" pos="0.0952628 -0.055 1.1658" size="0.02"/>
+      <geom type="mesh" mesh="m_base_0" rgba="0.4 0.4 0.45 1"/>
+      <site name="com_base" pos="0.00192465 0.00416315 0.553989" size="0.015" rgba="1 1 0 1"/>
+      <body name="yaw" pos="0 0 0">
+        <inertial pos="0.00045566 0.00656782 0.182508" mass="20.7242" fullinertia="0.381776 0.637848 0.344314 -5.87744e-05 -0.00118726 0.031012"/>
+        <joint name="neck_yaw" type="hinge" pos="0 0 0.3103" axis="0 0 1" armature="1.06" damping="2" frictionloss="3"/>
+        <geom type="mesh" mesh="m_yaw_0" rgba="0.2 0.45 0.85 1"/>
+        <site name="com_yaw" pos="0.00045566 0.00656782 0.182508" size="0.015" rgba="1 1 0 1"/>
+        <body name="pitch" pos="0 0 0">
+          <inertial pos="-0.000254136 0.0293608 0.242969" mass="325.9920" fullinertia="103.961 95.7393 81.5105 0.0198513 0.00616249 -8.90959"/>
+          <joint name="neck_pitch" type="hinge" pos="0 0 0.1688" axis="-1 0 0" armature="2.385" damping="2" frictionloss="3"/>
+          <geom type="mesh" mesh="m_pitch_0" rgba="0.85 0.6 0.3 0.55"/>
+          <site name="com_pitch" pos="-0.000254136 0.0293608 0.242969" size="0.015" rgba="1 1 0 1"/>
+          <body name="eye_pitch" pos="0 0 0">
+            <inertial pos="1.44404e-17 -0.354435 0.276964" mass="0.4805" fullinertia="0.000144385 0.013183 0.0130801 6.46589e-10 5.35339e-11 8.57782e-06"/>
+            <joint name="eye_pitch" type="hinge" pos="0 -0.355 0.2838" axis="1 0 0" armature="0.143485" damping="0.02" frictionloss="0.05"/>
+            <geom type="mesh" mesh="m_eye_pitch_0" rgba="0.2 0.75 0.3 1"/>
+            <site name="com_eye_pitch" pos="1.44404e-17 -0.354435 0.276964" size="0.015" rgba="1 1 0 1"/>
+          </body>
+          <body name="eye_yaw_l" pos="0 0 0">
+            <inertial pos="0.318626 -0.324597 0.169092" mass="0.0836" fullinertia="1.20662e-05 0.000118294 0.000120132 -1.42602e-05 2.18407e-06 2.86478e-07"/>
+            <joint name="eye_yaw_l" type="hinge" pos="0.2625 -0.3241 0.1585" axis="0 -0.559215 0.829023" armature="0.250883" damping="0.02" frictionloss="0.05"/>
+            <geom type="mesh" mesh="m_eye_yaw_l_0" rgba="0.85 0.2 0.2 1"/>
+            <site name="com_eye_yaw_l" pos="0.318626 -0.324597 0.169092" size="0.015" rgba="1 1 0 1"/>
+          </body>
+          <body name="eye_yaw_r" pos="0 0 0">
+            <inertial pos="-0.318626 -0.324596 0.169093" mass="0.0836" fullinertia="1.20659e-05 0.000118294 0.000120132 1.42588e-05 -2.18503e-06 2.86616e-07"/>
+            <joint name="eye_yaw_r" type="hinge" pos="-0.2625 -0.3241 0.1585" axis="0 -0.559215 0.829023" armature="0.250883" damping="0.02" frictionloss="0.05"/>
+            <geom type="mesh" mesh="m_eye_yaw_r_0" rgba="0.85 0.2 0.6 1"/>
+            <site name="com_eye_yaw_r" pos="-0.318626 -0.324596 0.169093" size="0.015" rgba="1 1 0 1"/>
+          </body>
+          <body name="eyeball_pitch_l" pos="0 0 0">
+            <inertial pos="0.268 -0.3683 0.1244" mass="0.0100" fullinertia="1e-06 1e-06 1e-06 0 0 0"/>
+            <joint name="eyeball_pitch_l" type="hinge" pos="0.268 -0.3683 0.1244" axis="-0.995194 -0.0810158 -0.0550107" damping="0.001"/>
+            <site name="com_eyeball_pitch_l" pos="0.268 -0.3683 0.1244" size="0.015" rgba="1 1 0 1"/>
+            <body name="eyeball_l" pos="0 0 0">
+              <inertial pos="0.274813 -0.42754 0.0873051" mass="20.1981" fullinertia="0.11114 0.210295 0.188125 -0.00952797 -0.00631169 0.0250332"/>
+              <joint name="eyeball_yaw_l" type="hinge" pos="0.268 -0.3683 0.1244" axis="0 -0.559215 0.829023" damping="0.001"/>
+              <geom type="mesh" mesh="m_eyeball_l_0" rgba="0.9 0.9 0.85 1"/>
+              <site name="com_eyeball_l" pos="0.274813 -0.42754 0.0873051" size="0.015" rgba="1 1 0 1"/>
+            </body>
+          </body>
+          <body name="eyeball_pitch_r" pos="0 0 0">
+            <inertial pos="-0.268 -0.3683 0.1244" mass="0.0100" fullinertia="1e-06 1e-06 1e-06 0 0 0"/>
+            <joint name="eyeball_pitch_r" type="hinge" pos="-0.268 -0.3683 0.1244" axis="-0.995194 0.0810158 0.0550107" damping="0.001"/>
+            <site name="com_eyeball_pitch_r" pos="-0.268 -0.3683 0.1244" size="0.015" rgba="1 1 0 1"/>
+            <body name="eyeball_r" pos="0 0 0">
+              <inertial pos="-0.274813 -0.42754 0.087305" mass="20.1981" fullinertia="0.11114 0.210296 0.188124 0.00951965 0.00632303 0.0250327"/>
+              <joint name="eyeball_yaw_r" type="hinge" pos="-0.268 -0.3683 0.1244" axis="0 -0.559215 0.829023" damping="0.001"/>
+              <geom type="mesh" mesh="m_eyeball_r_0" rgba="0.9 0.9 0.85 1"/>
+              <site name="com_eyeball_r" pos="-0.274813 -0.42754 0.087305" size="0.015" rgba="1 1 0 1"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <tendon>
+    <spatial name="wire0" limited="true" range="0 2.84730" solreflimit="0.004 1" width="0.006" rgba="0.1 0.1 0.1 1"><site site="ceil0"/><site site="plate0"/></spatial>
+    <spatial name="wire1" limited="true" range="0 2.84730" solreflimit="0.004 1" width="0.006" rgba="0.1 0.1 0.1 1"><site site="ceil1"/><site site="plate1"/></spatial>
+    <spatial name="wire2" limited="true" range="0 2.84730" solreflimit="0.004 1" width="0.006" rgba="0.1 0.1 0.1 1"><site site="ceil2"/><site site="plate2"/></spatial>
+  </tendon>
+  <equality>
+    <joint name="link_eyeball_pitch_l" joint1="eyeball_pitch_l" joint2="eye_pitch" polycoef="0 0.560005 0.10257 -0.257375 0" solref="0.002 1"/>
+    <joint name="link_eyeball_yaw_l" joint1="eyeball_yaw_l" joint2="eye_yaw_l" polycoef="0 0.955431 -0.0486467 -0.00408892 0" solref="0.002 1"/>
+    <joint name="link_eyeball_pitch_r" joint1="eyeball_pitch_r" joint2="eye_pitch" polycoef="0 0.560005 0.10257 -0.257375 0" solref="0.002 1"/>
+    <joint name="link_eyeball_yaw_r" joint1="eyeball_yaw_r" joint2="eye_yaw_r" polycoef="0 0.955431 -0.0486467 -0.00408892 0" solref="0.002 1"/>
+  </equality>
+  <actuator>
+    <motor name="act_neck_yaw" joint="neck_yaw" ctrlrange="-644.400 644.400" ctrllimited="true"/>
+    <motor name="act_neck_pitch" joint="neck_pitch" ctrlrange="-966.600 966.600" ctrllimited="true"/>
+    <motor name="act_eye_pitch" joint="eye_pitch" ctrlrange="-42.750 42.750" ctrllimited="true"/>
+    <motor name="act_eye_yaw_l" joint="eye_yaw_l" ctrlrange="-15.120 15.120" ctrllimited="true"/>
+    <motor name="act_eye_yaw_r" joint="eye_yaw_r" ctrlrange="-15.120 15.120" ctrllimited="true"/>
+  </actuator>
+</mujoco>

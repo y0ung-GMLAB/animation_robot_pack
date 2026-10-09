@@ -1,0 +1,4 @@
+name: floating_4_1800
+version: "1.0.8"
+created: "2026-10-02"
+scene_glb: {animations: [floating_narration_all_9min, floating_narration_all_90s]}   # 9분 장면 하나 · 90초 = 9분 앞 4650프레임과 같음
