@@ -27,12 +27,15 @@ floating<N>_pack/            → N번 로봇 PC 의 웹 · 시스템 정보 → 
 - `floating_narration_all_9min.json` · 전체 556 s (27801 프레임) · `floating_narration_all_9min.wav` 와 짝
 - `floating_narration_all_90s.json` · 앞 93 s 시안 (4650 프레임 · 9min 의 앞부분과 값 같음) · `floating_narration_all_90s.wav` (원본 앞 93.0 s) 와 짝
 - 패널 토크쇼식 대화 (KO 질문자 · DE/FR/ES 답변) · 속도 상한 = 사용자 속도 테스트 (고개 좌우 9 °/s · 14 °/s² · 상하 6 · 10 · 눈 10 · 22) · 내보내기 검사 오류 0
+- 고개 상하 −10 ~ 10° 안 (2026-10-09 · 고개 상하 전체 ×0.8 비례 축소 · 이전 최대 12.5° · Blender MotorLimit 도 ±10)
 - 음원 · **스피커 PC 웹 `http://<스피커 IP>:8100` → 음원 업로드** → 「애니메이션별 음원」 표에서 같은 이름 애니메이션에 연결 · 로봇 PC 에는 안 올림
 - 원본 · `floating/floating_1800/blend/floating_narration_all_9min.blend` · `floating_narration_all_90s.blend`
 
 ## floating1_pack ~ floating4_pack
 
-- 로봇마다 팩 하나 · 내용 같음 · `robot.yaml` 의 `motion_id` 접두어 (`f1_` … `f4_`) · `pack.yaml` name 만 다름 · 4대 모두 1800 모델 기준 (사이즈 다른 로봇이면 그 팩만 교체)
+- 로봇마다 팩 하나 · 다른 것 · `robot.yaml` 의 `motion_id` 접두어 (`f1_` … `f4_`) · `pack.yaml` name · 얼굴·눈 메쉬 · 나머지 같음 · 4대 모두 1800 모델 기준 (사이즈 다른 로봇이면 그 팩만 교체)
+- 얼굴·눈 메쉬 (1.0.10) · `meshes/face.stl` · `eyeball_l.stl` · `eyeball_r.stl` = 그 자리 디자이너 얼굴 (f1 02번 · f2 03번 · f3 04번 · f4 01번 헤드) · 회색 · 텍스처 없음 · 3만 / 5천 삼각형 · 보기용 (질량·관성은 1800 모델 값 그대로)
+- 매달림 비틀림 · `env.torsion_k` 300 · `torsion_c` 90 (2026-10-09 · 4대 9min 물리 보기로 눈으로 맞춘 값 · 실측 아님 · 이전 500 / 150)
 - `scene.glb` (웹 「Blender 뷰」) · 헤드 4대만 (디자이너 얼굴 + 눈 · 매장 없음 · 15만 삼각형 · 텍스처 1024) + 9min 애니메이션 556 s · 32 MB · 4개 팩에 같은 파일
   - `pack.yaml` `scene_glb.animations` = `floating_narration_all_9min` · `floating_narration_all_90s` (90s 는 9min 앞부분과 같아서 같은 장면 사용)
   - **애니메이션 고치면 다시 만들어야 함**

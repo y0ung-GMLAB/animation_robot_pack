@@ -14,7 +14,7 @@
   <link name="pitch">
     <inertial><origin xyz="-0.000254136 0.0293608 0.074169" rpy="0 0 0"/><mass value="325.9920"/>
       <inertia ixx="103.961" ixy="0.0198513" ixz="0.00616249" iyy="95.7393" iyz="-8.90959" izz="81.5105"/></inertial>
-    <visual><origin xyz="-0 -0 -0.1688" rpy="0 0 0"/><geometry><mesh filename="meshes/pitch_0.stl"/></geometry></visual>
+    <visual><origin xyz="-0 -0 -0.1688" rpy="0 0 0"/><geometry><mesh filename="meshes/face.stl"/></geometry></visual>
   </link>
   <link name="eye_pitch">
     <inertial><origin xyz="1.44404e-17 0.000565318 -0.00683593" rpy="0 0 0"/><mass value="0.4805"/>
@@ -42,12 +42,12 @@
   <link name="eyeball_l">
     <inertial><origin xyz="0.00681306 -0.0592398 -0.0370949" rpy="0 0 0"/><mass value="20.1981"/>
       <inertia ixx="0.11114" ixy="-0.00952797" ixz="-0.00631169" iyy="0.210295" iyz="0.0250332" izz="0.188125"/></inertial>
-    <visual><origin xyz="-0.268 0.3683 -0.1244" rpy="0 0 0"/><geometry><mesh filename="meshes/eyeball_l_0.stl"/></geometry></visual>
+    <visual><origin xyz="-0.268 0.3683 -0.1244" rpy="0 0 0"/><geometry><mesh filename="meshes/eyeball_l.stl"/></geometry></visual>
   </link>
   <link name="eyeball_r">
     <inertial><origin xyz="-0.00681256 -0.0592398 -0.037095" rpy="0 0 0"/><mass value="20.1981"/>
       <inertia ixx="0.11114" ixy="0.00951965" ixz="0.00632303" iyy="0.210296" iyz="0.0250327" izz="0.188124"/></inertial>
-    <visual><origin xyz="0.268 0.3683 -0.1244" rpy="0 0 0"/><geometry><mesh filename="meshes/eyeball_r_0.stl"/></geometry></visual>
+    <visual><origin xyz="0.268 0.3683 -0.1244" rpy="0 0 0"/><geometry><mesh filename="meshes/eyeball_r.stl"/></geometry></visual>
   </link>
   <joint name="neck_yaw" type="revolute">
     <parent link="base"/><child link="yaw"/>
