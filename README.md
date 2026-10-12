@@ -28,6 +28,7 @@ floating<N>_animation/animations/*.json → N번 로봇 전용 테스트 애니�
 - `floating_narration_all_90s.json` · 앞 93 s 시안 (4650 프레임 · 9min 의 앞부분과 값 같음) · `floating_narration_all_90s.wav` (원본 앞 93.0 s) 와 짝
 - 패널 토크쇼식 대화 (KO 질문자 · DE/FR/ES 답변) · 속도 상한 = 사용자 속도 테스트 (고개 좌우 9 °/s · 14 °/s² · 상하 6 · 10 · 눈 10 · 22) · 내보내기 검사 오류 0
 - 고개 상하 −10 ~ 10° 안 (2026-10-09 · 고개 상하 전체 ×0.8 비례 축소 · 이전 최대 12.5° · Blender MotorLimit 도 ±10)
+- 시작 자세 = 모든 축 0 (2026-10-12 · 이전엔 1프레임이 듣는 자세라 최대 6° 떨어져 있었음 · 처음 5 s(253 프레임) 안의 시작 동작만 0 에서 출발하도록 고침 · 그 뒤는 그대로)
 - 음원 · **스피커 PC 웹 `http://<스피커 IP>:8100` → 음원 업로드** → 「애니메이션별 음원」 표에서 같은 이름 애니메이션에 연결 · 로봇 PC 에는 안 올림
 - 원본 · `floating/floating_1800/blend/floating_narration_all_9min.blend` · `floating_narration_all_90s.blend`
 
@@ -42,7 +43,7 @@ floating<N>_animation/animations/*.json → N번 로봇 전용 테스트 애니�
 - 매달림 비틀림 · `env.torsion_k` 300 · `torsion_c` 90 (2026-10-09 · 4대 9min 물리 보기로 눈으로 맞춘 값 · 실측 아님 · 이전 500 / 150)
 - `scene.glb` (웹 「Blender 뷰」) · 헤드 4대만 (디자이너 얼굴 + 눈 · 매장 없음 · 15만 삼각형 · 텍스처 1024) + 9min 애니메이션 556 s · 32 MB · 4개 팩에 같은 파일
   - `pack.yaml` `scene_glb.animations` = `floating_narration_all_9min` · `floating_narration_all_90s` (90s 는 9min 앞부분과 같아서 같은 장면 사용)
-  - **애니메이션 고치면 다시 만들어야 함**
+  - **애니메이션 고치면 다시 만들어야 함** (1.0.12 · 9min 시작 0 수정분은 glb 안 본 회전만 새 json 에 맞춰 고침)
 - 모델 · `floating/floating_1800/sim/fh_1800_wires_R011.xml` (천장 원판 3점 수직 와이어)
 - drive · PC 모터 설정 = 플랫폼 기본값 18000 deg/s · 180000 deg/s² (모터축)
 
