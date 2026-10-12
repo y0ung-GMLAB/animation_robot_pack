@@ -4,11 +4,11 @@
 (로봇 PC 가 git pull 하는 저장소 아님 · 플랫폼 코드는 `robot_web`)
 
 ```
-<공연>/                      → 공연 애니메이션 폴더 (예: floating_narration_all) · 여러 로봇 공통
+<공연>/                      → 공연 애니메이션 폴더 (예: floating_all_narration) · 여러 로봇 공통
   <애니메이션>.json         → 웹 · 애니메이션 재생 화면에 드래그 (모든 로봇 공통 · 로봇마다 자기 motion_id 만 씀)
   <애니메이션>.wav          → 스피커 PC 웹(:8100) · 음원 업로드 · 「애니메이션별 음원」 에서 같은 이름 애니메이션에 연결
 floating<N>_pack/            → N번 로봇 PC 의 웹 · 시스템 정보 → 로봇 팩에 폴더째 드래그 (PC 전역 · 교체)
-<로봇>/animations/*.json     → 한 로봇 전용 테스트 애니메이션 (예: floating_1)
+floating<N>_animation/animations/*.json → N번 로봇 전용 테스트 애니메이션 (파일 이름 floating<N>_*)
 ```
 
 - 애니메이션 · Blender export 결과 그대로 (`motion_header` JSON Lines · 50 fps · rad)
@@ -20,7 +20,7 @@ floating<N>_pack/            → N번 로봇 PC 의 웹 · 시스템 정보 → 
   - 팩은 로봇마다 따로 (`robot.yaml` 의 `motion_id` 가 그 로봇 것) · 한 팩을 여러 PC 에 올리면 미리보기가 다른 로봇 움직임을 보여 줌
   - 올리기 전 검사 · robot_web 에서 `uv run --no-project --with mujoco --with numpy --with pyyaml python scripts/sim/sim_run.py --check <팩 폴더>`
 
-## floating_narration_all
+## floating_all_narration
 
 - 플로팅 4대 나레이션 공연 · 애니메이션마다 조인트 20개 (`f{N}_neck_yaw` …) · 4대 공통 (각 PC 는 자기 `f{N}_*` 만 씀)
 - 로봇 번호 · `Cam_Store` 에서 볼 때 왼쪽부터 f1 KO · f2 ES · f3 FR · f4 DE (2026-10-08)
@@ -42,8 +42,7 @@ floating<N>_pack/            → N번 로봇 PC 의 웹 · 시스템 정보 → 
 - 모델 · `floating/floating_1800/sim/fh_1800_wires_R011.xml` (천장 원판 3점 수직 와이어)
 - drive · PC 모터 설정 = 플랫폼 기본값 18000 deg/s · 180000 deg/s² (모터축)
 
-## floating_1 ~ 4
+## floating1_animation ~ floating4_animation
 
 - 로봇 전용 테스트 애니메이션 · 팩은 `floating<N>_pack` 사용
-- `floating_1800_dir_test` (방향) · `floating_1800_limit_test` (리미트) · 4대 모두 같은 움직임 · id 만 `f{N}_*`
-- `floating_no1_motion1` · `floating_no2_motion1` · 옛 `N-k` id 그대로 · 조인트 이름을 `f{N}_*` 로 바꾼 PC 에서는 움직이지 않음
+- `floating<N>_dir_test` (방향 확인) · 4대 모두 같은 움직임 · id 만 `f{N}_*` (그 로봇 5축만 들어 있음)
