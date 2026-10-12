@@ -1,0 +1,26 @@
+name: floating_2_1800
+version: "1.0.13"
+created: "2026-10-02"
+# Blender 뷰 · 모델만(애니메이션 없음) · 웹이 애니메이션 json 값으로 노드를 돌림 (robot_web 수정 목록 98) · 4대 모두 한 glb
+scene_glb:
+  joints:
+    f1_neck_yaw:   {node: f1_neck_yaw, axis: [0, 0, 1]}
+    f1_neck_pitch: {node: f1_neck_pitch, axis: [1, 0, 0]}
+    f1_eye_pitch:  {node: f1_eye_pitch, axis: [1, 0, 0]}
+    f1_eye_yaw_l:  {node: f1_eye_yaw_l, axis: [0, 0, 1]}
+    f1_eye_yaw_r:  {node: f1_eye_yaw_r, axis: [0, 0, 1]}
+    f2_neck_yaw:   {node: f2_neck_yaw, axis: [0, 0, 1]}
+    f2_neck_pitch: {node: f2_neck_pitch, axis: [1, 0, 0]}
+    f2_eye_pitch:  {node: f2_eye_pitch, axis: [1, 0, 0]}
+    f2_eye_yaw_l:  {node: f2_eye_yaw_l, axis: [0, 0, 1]}
+    f2_eye_yaw_r:  {node: f2_eye_yaw_r, axis: [0, 0, 1]}
+    f3_neck_yaw:   {node: f3_neck_yaw, axis: [0, 0, 1]}
+    f3_neck_pitch: {node: f3_neck_pitch, axis: [1, 0, 0]}
+    f3_eye_pitch:  {node: f3_eye_pitch, axis: [1, 0, 0]}
+    f3_eye_yaw_l:  {node: f3_eye_yaw_l, axis: [0, 0, 1]}
+    f3_eye_yaw_r:  {node: f3_eye_yaw_r, axis: [0, 0, 1]}
+    f4_neck_yaw:   {node: f4_neck_yaw, axis: [0, 0, 1]}
+    f4_neck_pitch: {node: f4_neck_pitch, axis: [1, 0, 0]}
+    f4_eye_pitch:  {node: f4_eye_pitch, axis: [1, 0, 0]}
+    f4_eye_yaw_l:  {node: f4_eye_yaw_l, axis: [0, 0, 1]}
+    f4_eye_yaw_r:  {node: f4_eye_yaw_r, axis: [0, 0, 1]}
