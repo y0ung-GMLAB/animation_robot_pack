@@ -12,8 +12,8 @@
     <visual><origin xyz="-0 -0 -0.3103" rpy="0 0 0"/><geometry><mesh filename="meshes/yaw_0.stl"/></geometry></visual>
   </link>
   <link name="pitch">
-    <inertial><origin xyz="-0.000254136 0.0293608 0.074169" rpy="0 0 0"/><mass value="325.9920"/>
-      <inertia ixx="103.961" ixy="0.0198513" ixz="0.00616249" iyy="95.7393" iyz="-8.90959" izz="81.5105"/></inertial>
+    <inertial><origin xyz="-0.000318278 -0.0185439 0.0237982" rpy="0 0 0"/><mass value="325.9920"/>
+      <inertia ixx="91.1217" ixy="0.0367541" ixz="0.0160049" iyy="83.3618" iyz="-11.0511" izz="70.4807"/></inertial>
     <visual><origin xyz="-0 -0 -0.1688" rpy="0 0 0"/><geometry><mesh filename="meshes/face.stl"/></geometry></visual>
   </link>
   <link name="eye_pitch">
@@ -42,12 +42,12 @@
   <link name="eyeball_l">
     <inertial><origin xyz="0.00681306 -0.0592398 -0.0370949" rpy="0 0 0"/><mass value="20.1981"/>
       <inertia ixx="0.11114" ixy="-0.00952797" ixz="-0.00631169" iyy="0.210295" iyz="0.0250332" izz="0.188125"/></inertial>
-    <visual><origin xyz="-0.268 0.3683 -0.1244" rpy="0 0 0"/><geometry><mesh filename="meshes/eyeball_l.stl"/></geometry></visual>
+    <visual><origin xyz="-0.2368 0.381 -0.1572" rpy="0 0 0"/><geometry><mesh filename="meshes/eyeball_l.stl"/></geometry></visual>
   </link>
   <link name="eyeball_r">
     <inertial><origin xyz="-0.00681256 -0.0592398 -0.037095" rpy="0 0 0"/><mass value="20.1981"/>
       <inertia ixx="0.11114" ixy="0.00951965" ixz="0.00632303" iyy="0.210296" iyz="0.0250327" izz="0.188124"/></inertial>
-    <visual><origin xyz="0.268 0.3683 -0.1244" rpy="0 0 0"/><geometry><mesh filename="meshes/eyeball_r.stl"/></geometry></visual>
+    <visual><origin xyz="0.2368 0.381 -0.1572" rpy="0 0 0"/><geometry><mesh filename="meshes/eyeball_r.stl"/></geometry></visual>
   </link>
   <joint name="neck_yaw" type="revolute">
     <parent link="base"/><child link="yaw"/>
@@ -76,7 +76,7 @@
   </joint>
   <joint name="eyeball_pitch_l" type="revolute">
     <parent link="pitch"/><child link="eyeball_pitch_l"/>
-    <origin xyz="0.268 -0.3683 -0.0444" rpy="0 0 0"/><axis xyz="-0.995194 -0.0810158 -0.0550107"/>
+    <origin xyz="0.2368 -0.381 -0.0116" rpy="0 0 0"/><axis xyz="-0.995194 -0.0810158 -0.0550107"/>
     <limit lower="-0.5" upper="0.5" effort="0" velocity="10"/><mimic joint="eye_pitch" multiplier="0.5600" offset="0"/>
   </joint>
   <joint name="eyeball_yaw_l" type="revolute">
@@ -86,7 +86,7 @@
   </joint>
   <joint name="eyeball_pitch_r" type="revolute">
     <parent link="pitch"/><child link="eyeball_pitch_r"/>
-    <origin xyz="-0.268 -0.3683 -0.0444" rpy="0 0 0"/><axis xyz="-0.995194 0.0810158 0.0550107"/>
+    <origin xyz="-0.2368 -0.381 -0.0116" rpy="0 0 0"/><axis xyz="-0.995194 0.0810158 0.0550107"/>
     <limit lower="-0.5" upper="0.5" effort="0" velocity="10"/><mimic joint="eye_pitch" multiplier="0.5600" offset="0"/>
   </joint>
   <joint name="eyeball_yaw_r" type="revolute">

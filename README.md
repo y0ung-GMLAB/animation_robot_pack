@@ -33,8 +33,12 @@ floating<N>_animation/animations/*.json → N번 로봇 전용 테스트 애니�
 
 ## floating1_pack ~ floating4_pack
 
-- 로봇마다 팩 하나 · 다른 것 · `robot.yaml` 의 `motion_id` 접두어 (`f1_` … `f4_`) · `pack.yaml` name · 얼굴·눈 메쉬 · 나머지 같음 · 4대 모두 1800 모델 기준 (사이즈 다른 로봇이면 그 팩만 교체)
-- 얼굴·눈 메쉬 (1.0.10) · `meshes/face.stl` · `eyeball_l.stl` · `eyeball_r.stl` = 그 자리 디자이너 얼굴 (f1 02번 · f2 03번 · f3 04번 · f4 01번 헤드) · 회색 · 텍스처 없음 · 3만 / 5천 삼각형 · 보기용 (질량·관성은 1800 모델 값 그대로)
+- 로봇마다 팩 하나 · 다른 것 · `robot.yaml` 의 `motion_id` 접두어 (`f1_` … `f4_`) · `pack.yaml` name · 얼굴·눈 메쉬 · 얼굴 무게중심·관성 · 눈알 회전 중심 · 기구(목·눈 모터·링크)는 4대 같음 (1800 CAD)
+- 얼굴·눈 메쉬 (1.0.10) · `meshes/face.stl` · `eyeball_l.stl` · `eyeball_r.stl` = 그 자리 디자이너 얼굴 (f1 02번 · f2 03번 · f3 04번 · f4 01번 헤드) · 회색 · 텍스처 없음 · 3만 / 5천 삼각형
+- 로봇별 물리 (1.0.11 · 2026-10-12)
+  - 얼굴 245 kg (4대 같음) · 무게중심·관성 = 그 로봇 `face.stl` 균일 껍질 (1.0.10 까지는 1800 Fusion 얼굴 껍질)
+  - 눈알 회전 중심 (유니버설 조인트) = Blender 리그 눈 본 머리 · x ±243.9 / ±236.8 / ±248.2 / ±277.1 mm (f1~f4) · y −381 · z 157.2 · 눈알 바디(20 kg)는 통째로 같이 이동 · 링크 비율(눈 좌우 0.955 · 상하 −0.56)은 그대로
+  - 정지 목 상하 토크(0°) · f1 189 · f2 236 · f3 120 · f4 149 Nm (1.0.10 공통 78 Nm · 얼굴 무게중심이 앞으로 옴 · 균일 껍질 가정이라 실측 필요)
 - 매달림 비틀림 · `env.torsion_k` 300 · `torsion_c` 90 (2026-10-09 · 4대 9min 물리 보기로 눈으로 맞춘 값 · 실측 아님 · 이전 500 / 150)
 - `scene.glb` (웹 「Blender 뷰」) · 헤드 4대만 (디자이너 얼굴 + 눈 · 매장 없음 · 15만 삼각형 · 텍스처 1024) + 9min 애니메이션 556 s · 32 MB · 4개 팩에 같은 파일
   - `pack.yaml` `scene_glb.animations` = `floating_narration_all_9min` · `floating_narration_all_90s` (90s 는 9min 앞부분과 같아서 같은 장면 사용)
