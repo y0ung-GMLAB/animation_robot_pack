@@ -4,12 +4,18 @@
 (로봇 PC 가 git pull 하는 저장소 아님 · 플랫폼 코드는 `robot_web`)
 
 ```
-<공연>/                      → 공연 애니메이션 폴더 (예: floating_all_narration) · 여러 로봇 공통
+ny/                          → 플로팅 헤드 4대 세트 (아래 폴더들)
+la/                          → 플로팅 헤드 3대 세트 (준비 중 · 아직 비어 있음)
+test/                        → 시험용 애니메이션 (공연용 아님 · 파일 이름 floating<N>_*)
+
+<세트>/<공연>/                → 공연 애니메이션 폴더 (예: ny/floating_all_narration) · 여러 로봇 공통
   <애니메이션>.json         → 웹 · 애니메이션 재생 화면에 드래그 (모든 로봇 공통 · 로봇마다 자기 motion_id 만 씀)
   <애니메이션>.wav          → 스피커 PC 웹(:8100) · 음원 업로드 · 「애니메이션별 음원」 에서 같은 이름 애니메이션에 연결
-floating<N>_pack/            → N번 로봇 PC 의 웹 · 시스템 정보 → 로봇 팩에 폴더째 드래그 (PC 전역 · 교체)
-floating<N>_animation/animations/*.json → N번 로봇 전용 테스트 애니메이션 (파일 이름 floating<N>_*)
+<세트>/floating<N>_pack/      → N번 로봇 PC 의 웹 · 시스템 정보 → 로봇 팩에 폴더째 드래그 (PC 전역 · 교체)
+<세트>/floating<N>_animation/animations/*.json → N번 로봇 전용 테스트 애니메이션 (파일 이름 floating<N>_*)
 ```
+
+아래 「floating_all_narration」 ~ 「floating1_animation ~ floating4_animation」 은 모두 `ny/` 안.
 
 - 애니메이션 · Blender export 결과 그대로 (`motion_header` JSON Lines · 50 fps · rad)
 - 로봇 팩 · 폴더로 저장 · zip 불필요 (화면이 묶어서 올림)
@@ -30,7 +36,7 @@ floating<N>_animation/animations/*.json → N번 로봇 전용 테스트 애니�
 - 고개 상하 −10 ~ 10° 안 (2026-10-09 · 고개 상하 전체 ×0.8 비례 축소 · 이전 최대 12.5° · Blender MotorLimit 도 ±10)
 - 시작 자세 = 모든 축 0 (2026-10-12 · 이전엔 1프레임이 듣는 자세라 최대 6° 떨어져 있었음 · 처음 5 s(253 프레임) 안의 시작 동작만 0 에서 출발하도록 고침 · 그 뒤는 그대로)
 - 음원 · **스피커 PC 웹 `http://<스피커 IP>:8100` → 음원 업로드** → 「애니메이션별 음원」 표에서 같은 이름 애니메이션에 연결 · 로봇 PC 에는 안 올림
-- 원본 · `floating/floating_1800/blend/floating_narration_all_9min.blend` · `floating_narration_all_90s.blend`
+- 원본 · `D:\blender_files\floating\ny\` 의 `ny_floating_9min.blend` · `ny_floating_90s_v1.blend`
 
 ## floating1_pack ~ floating4_pack
 
@@ -54,4 +60,19 @@ floating<N>_animation/animations/*.json → N번 로봇 전용 테스트 애니�
 - 로봇 전용 테스트 애니메이션 · 팩은 `floating<N>_pack` 사용
 - `floating<N>_dir_test` (방향 확인) · 4대 모두 같은 움직임 · id 만 `f{N}_*` (그 로봇 5축만 들어 있음)
   - 17 s (850 프레임) · 목 좌우 +5 → 목 상하 −5 → 눈 상하 −5 → 눈 좌우 +7 (눈알 각도) 차례로 쌓고 1 s 씩 유지 → 모두 0 · 속도 상한 안 (검사 오류·경고 0)
-  - 원본 · `floating/floating_1800/blend/floating_dir_test.blend` (리그 4대 · 내보낸 20축을 로봇별 5축으로 나눔)
+  - 원본 · `D:\blender_files\floating\test\ny_floating_dir_test.blend` (리그 4대 · 내보낸 20축을 로봇별 5축으로 나눔)
+
+## la
+
+- 플로팅 헤드 3대 세트 · 준비 중 (2026-10-15 폴더만 만듦)
+
+## test
+
+- 시험용 애니메이션 · 공연용 아님 · 그 로봇 5축만 들어 있음 (다른 로봇 PC 에 올려도 안 움직임)
+- `floating3_eye_15` · `_20` · `_25` (2026-10-15 · ny floating3) · 눈 속도를 단계적으로 올려 보는 시험
+  - 15 s (751 프레임) · 시작 자세 0 · 원본 = `ny_floating_90s_v3` (ny 나레이션 v3 시안) 앞 15 s 의 f3 · 고개는 v3 그대로 (상한 9 · 14 / 6 · 10 안)
+  - 눈 · 한 곳을 보고 멈춰 있다가 (0.5 ~ 2.2 s) 짧게 튀어 다음 곳으로 (사카드 느낌) · 멈춰 있는 동안 고개가 돌면 눈이 반대로 돌아 시선 유지
+  - 숫자 = 눈 속도 상한 · 가속 상한은 짝으로 · 15 °/s · 40 °/s² / 20 · 70 / 25 · 100 (기존 공연 눈 10 · 22) · 세 파일 점프 타이밍 같음 · 빠르기만 다름
+  - **floating3 조인트 매핑 눈 3축 (`f3_eye_pitch` · `f3_eye_yaw_l` · `f3_eye_yaw_r`) 의 최대 속도 · 가속을 그 파일 값 이상으로 올린 뒤 재생** (그대로면 PC 검사에 걸림)
+  - 내보내기 검사 · 오류 0 · MotorLimit 0 · 눈 가속은 상한의 90 % 까지 씀 (경고는 정상)
+  - 원본 · `D:\blender_files\floating\test\ny_floating_f3eye_{15,20,25}_15s.blend` (리그 4대 · f3 눈 본 속도 상한 속성도 그 값)
