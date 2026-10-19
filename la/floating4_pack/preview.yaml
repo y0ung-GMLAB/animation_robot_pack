@@ -1,0 +1,8 @@
+precompute:
+  command: [uv, run, --no-project, --with=mujoco, --with=numpy, --with=pyyaml, python,
+            '{stack}/scripts/sim/sim_run.py', '{pack}', '{motion_path}', '{motion_stem}.sim.csv']
+  result: '{motion_stem}.sim.npz'
+preview:
+  command: [uv, run, --no-project, --with=mujoco, --with=numpy, --with=pyyaml, python,
+            '{stack}/scripts/sim/replay_run.py', '{result}', '{fps}']
+fps: 60
