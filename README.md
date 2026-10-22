@@ -3,19 +3,24 @@
 로봇별 애니메이션 · 로봇 팩 보관소 · 받아서 웹 화면에 드래그로 올리는 용도
 (로봇 PC 가 git pull 하는 저장소 아님 · 플랫폼 코드는 `robot_web`)
 
-```
-ny/                          → 플로팅 헤드 4대 세트 (아래 폴더들)
-la/                          → 플로팅 헤드 3대 세트 (준비 중 · 아직 비어 있음)
-test/                        → 시험용 애니메이션 (공연용 아님 · 파일 이름 floating<N>_*)
+로봇 종류마다 최상위 폴더 하나 (2026-10-22 · 사용자)
 
-<세트>/<공연>/                → 공연 애니메이션 폴더 (예: ny/floating_all_narration) · 여러 로봇 공통
-  <애니메이션>.json         → 웹 · 애니메이션 재생 화면에 드래그 (모든 로봇 공통 · 로봇마다 자기 motion_id 만 씀)
-  <애니메이션>.wav          → 스피커 PC 웹(:8100) · 음원 업로드 · 「애니메이션별 음원」 에서 같은 이름 애니메이션에 연결
-<세트>/floating<N>_pack/      → N번 로봇 PC 의 웹 · 시스템 정보 → 로봇 팩에 폴더째 드래그 (PC 전역 · 교체)
-<세트>/floating<N>_animation/animations/*.json → N번 로봇 전용 테스트 애니메이션 (파일 이름 floating<N>_*)
+```
+floating/                              → 플로팅 헤드
+  floating1_pack/ … floating4_pack/    → N번 로봇 PC 의 웹 · 시스템 정보 → 로봇 팩에 폴더째 드래그 (PC 전역 · 교체) · NY 4대 배치
+  la_packs/floating2_pack/ … 4_pack/   → LA 3대용 팩 (로봇 내용은 위와 같고 scene.glb 배치만 LA) · la_packs/README.md
+  animations/
+    floating_all_narration/            → 4대 공연 애니메이션 · 여러 로봇 공통
+      <애니메이션>.json                → 웹 · 애니메이션 재생 화면에 드래그 (로봇마다 자기 motion_id 만 씀)
+      <애니메이션>.wav                 → 스피커 PC 웹(:8100) · 음원 업로드 · 「애니메이션별 음원」 에서 같은 이름 애니메이션에 연결
+    floating1/ … floating4/            → N번 로봇 전용 테스트 애니메이션 (파일 이름 floating<N>_*)
+    test/                              → 시험용 애니메이션 (공연용 아님 · 그 로봇 5축만)
+chicken/                               → 닭 오브제 (준비 중)
+  chicken_pack/                        → 로봇 팩
+  animations/                          → 애니메이션
 ```
 
-아래 「floating_all_narration」 ~ 「floating1_animation ~ floating4_animation」 은 모두 `ny/` 안.
+옛 구조(`ny/` · `la/` · `test/`) 는 2026-10-22 에 위처럼 옮김 · 아래 설명의 파일 내용은 그대로.
 
 - 애니메이션 · Blender export 결과 그대로 (`motion_header` JSON Lines · 50 fps · rad)
 - 로봇 팩 · 폴더로 저장 · zip 불필요 (화면이 묶어서 올림)
@@ -26,12 +31,14 @@ test/                        → 시험용 애니메이션 (공연용 아님 · 
   - 팩은 로봇마다 따로 (`robot.yaml` 의 `motion_id` 가 그 로봇 것) · 한 팩을 여러 PC 에 올리면 미리보기가 다른 로봇 움직임을 보여 줌
   - 올리기 전 검사 · robot_web 에서 `uv run --no-project --with mujoco --with numpy --with pyyaml python scripts/sim/sim_run.py --check <팩 폴더>`
 
-## floating_all_narration
+## animations/floating_all_narration
 
 - 플로팅 4대 나레이션 공연 · 애니메이션마다 조인트 20개 (`f{N}_neck_yaw` …) · 4대 공통 (각 PC 는 자기 `f{N}_*` 만 씀)
 - 로봇 번호 · `Cam_Store` 에서 볼 때 왼쪽부터 f1 KO · f2 ES · f3 FR · f4 DE (2026-10-08)
-- `floating_narration_all_9min.json` · 전체 556 s (27801 프레임) · `floating_narration_all_9min.wav` 와 짝
-- `floating_narration_all_90s.json` · 앞 93 s 시안 (4650 프레임 · 9min 의 앞부분과 값 같음) · `floating_narration_all_90s.wav` (원본 앞 93.0 s) 와 짝
+- **음원 (2026-10-22 · 새 대사 1 · 2)** · `floating_1.wav` 617.8 s · `floating_2.wav` 596.6 s · 원본 `D:\my_ws\floating\음원 대사\1.mp3` · `2.mp3` (2026-10-21) 를 wav 로 바꾼 것 (44.1 kHz · 모노 · 16 bit · 길이 그대로) · Blender `ny_floating_1*` · `ny_floating_2*` 의 음원 · 애니메이션 json 은 내보내면 같은 폴더에
+- 옛 음원 `floating_narration_all_9min.wav` · `_90s.wav` 는 지움 (2026-10-22 · 사용자 「옛날 거 이제 없어도 돼」) · 아래 옛 json 두 개는 남아 있음
+- `floating_narration_all_9min.json` · 전체 556 s (27801 프레임) · 옛 음원과 짝이던 것
+- `floating_narration_all_90s.json` · 앞 93 s 시안 (4650 프레임 · 9min 의 앞부분과 값 같음) · 옛 음원 앞 93.0 s 와 짝이던 것
 - 패널 토크쇼식 대화 (KO 질문자 · DE/FR/ES 답변) · 속도 상한 = 사용자 속도 테스트 (고개 좌우 9 °/s · 14 °/s² · 상하 6 · 10 · 눈 10 · 22) · 내보내기 검사 오류 0
 - 고개 상하 −10 ~ 10° 안 (2026-10-09 · 고개 상하 전체 ×0.8 비례 축소 · 이전 최대 12.5° · Blender MotorLimit 도 ±10)
 - 시작 자세 = 모든 축 0 (2026-10-12 · 이전엔 1프레임이 듣는 자세라 최대 6° 떨어져 있었음 · 처음 5 s(253 프레임) 안의 시작 동작만 0 에서 출발하도록 고침 · 그 뒤는 그대로)
@@ -55,18 +62,18 @@ test/                        → 시험용 애니메이션 (공연용 아님 · 
 - 모델 · `floating/floating_1800/sim/fh_1800_wires_R011.xml` (천장 원판 3점 수직 와이어)
 - drive · PC 모터 설정 = 플랫폼 기본값 18000 deg/s · 180000 deg/s² (모터축)
 
-## floating1_animation ~ floating4_animation
+## animations/floating1 ~ floating4
 
 - 로봇 전용 테스트 애니메이션 · 팩은 `floating<N>_pack` 사용
 - `floating<N>_dir_test` (방향 확인) · 4대 모두 같은 움직임 · id 만 `f{N}_*` (그 로봇 5축만 들어 있음)
   - 17 s (850 프레임) · 목 좌우 +5 → 목 상하 −5 → 눈 상하 −5 → 눈 좌우 +7 (눈알 각도) 차례로 쌓고 1 s 씩 유지 → 모두 0 · 속도 상한 안 (검사 오류·경고 0)
   - 원본 · `D:\blender_files\floating\test\ny_floating_dir_test.blend` (리그 4대 · 내보낸 20축을 로봇별 5축으로 나눔)
 
-## la
+## la_packs
 
-- 플로팅 헤드 3대 세트 · 준비 중 (2026-10-15 폴더만 만듦)
+- LA 3대용 팩 · `la_packs/README.md`
 
-## test
+## animations/test
 
 - 시험용 애니메이션 · 공연용 아님 · 그 로봇 5축만 들어 있음 (다른 로봇 PC 에 올려도 안 움직임)
 - `floating3_eye_15` · `_20` · `_25` (2026-10-15 · ny floating3) · 눈 속도를 단계적으로 올려 보는 시험
