@@ -52,7 +52,7 @@
   <joint name="neck_yaw" type="revolute">
     <parent link="base"/><child link="yaw"/>
     <origin xyz="0 0 0.3103" rpy="0 0 0"/><axis xyz="0 0 1"/>
-    <limit lower="-0.26180" upper="0.26180" effort="644.4" velocity="0.3840"/>
+    <limit lower="-0.31416" upper="0.31416" effort="644.4" velocity="0.3840"/>
   </joint>
   <joint name="neck_pitch" type="revolute">
     <parent link="yaw"/><child link="pitch"/>
