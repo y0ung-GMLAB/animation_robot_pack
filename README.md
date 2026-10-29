@@ -87,7 +87,7 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
 
 ## chicken/chicken_pack
 
-- 닭 오브제 팩 **1.1.0** (2026-10-29) · 축 4개 · `head_yaw` (FEETECH HLS3915M · TTL) · `crank_l` · `crank_r` · `crank_f` (XM430-W350-R · RS-485) · 감속기 없음 · ratio 1
+- 닭 오브제 팩 **1.1.1** (2026-10-29) · 축 4개 · `head_yaw` (FEETECH HLS3915M · TTL) · `crank_l` · `crank_r` · `crank_f` (XM430-W350-R · RS-485) · 감속기 없음 · ratio 1
 - **값 0 = 구조 중앙** · 모터마다 구조 상한·하한의 가운데 = chicken2 기준점 = composition5 1프레임 자세 (1.1.0 · 이전 1.0.x 는 0 = CAD 자세에서 머리만 편 리그 쉬는 자세)
   - Blender · 모터 본(Crank_L/R/F + 로드·링크 · Head_Yaw) 쉬는 자세를 그 자세로 옮김 · 조종 본 Neck_Base · Neck 은 기구 각도 그대로 (UJ 축이 틀어지지 않게) · 템플릿 1프레임 키 = 구조 중앙 자세
   - + 방향 = Blender 본 + (chicken2 조인트 매핑 invert true · 사용자가 조그로 확인)

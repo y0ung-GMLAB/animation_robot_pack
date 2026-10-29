@@ -1,5 +1,5 @@
 name: chicken
-version: "1.1.0"
+version: "1.1.1"
 created: "2026-10-29"
 # 1.1.0 (2026-10-29) · 값 0 = 구조 중앙 (모터마다 구조 상한·하한의 가운데 = chicken2 기준점 = composition5 1프레임 자세)
 # Blender 뷰 · 모델만 (애니메이션 없음) · 리그 D:\blender_files\chicken\chicken.blend
