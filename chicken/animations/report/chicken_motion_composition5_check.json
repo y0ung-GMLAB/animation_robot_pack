@@ -1,0 +1,71 @@
+{
+ "animation_file": "chicken_motion_composition5.json",
+ "samples": 3553,
+ "period_sec": 0.02,
+ "blender_fps": 50.0,
+ "blender_frames": [
+  1,
+  3553
+ ],
+ "warn_ratio": 0.8,
+ "errors": 0,
+ "warnings": 0,
+ "not_checked": [
+  "Head_Yaw",
+  "Crank_L",
+  "Crank_R",
+  "Crank_F"
+ ],
+ "axes": [
+  {
+   "bone": "Head_Yaw",
+   "joint_name": "head_yaw",
+   "vel_limit_deg_s": null,
+   "acc_limit_deg_s2": null,
+   "clip_peak_vel_deg_s": 1285.74,
+   "clip_peak_acc_deg_s2": 64286.976,
+   "peak_vel_pct": null,
+   "peak_acc_pct": null,
+   "clamped_by_MotorLimit_samples": 0,
+   "start_end_diff_deg": 4.659
+  },
+  {
+   "bone": "Crank_L",
+   "joint_name": "crank_l",
+   "vel_limit_deg_s": null,
+   "acc_limit_deg_s2": null,
+   "clip_peak_vel_deg_s": 447.215,
+   "clip_peak_acc_deg_s2": 22360.769,
+   "peak_vel_pct": null,
+   "peak_acc_pct": null,
+   "clamped_by_MotorLimit_samples": 0,
+   "start_end_diff_deg": 2.901
+  },
+  {
+   "bone": "Crank_R",
+   "joint_name": "crank_r",
+   "vel_limit_deg_s": null,
+   "acc_limit_deg_s2": null,
+   "clip_peak_vel_deg_s": 330.286,
+   "clip_peak_acc_deg_s2": 16514.277,
+   "peak_vel_pct": null,
+   "peak_acc_pct": null,
+   "clamped_by_MotorLimit_samples": 0,
+   "start_end_diff_deg": 0.088
+  },
+  {
+   "bone": "Crank_F",
+   "joint_name": "crank_f",
+   "vel_limit_deg_s": null,
+   "acc_limit_deg_s2": null,
+   "clip_peak_vel_deg_s": 1255.646,
+   "clip_peak_acc_deg_s2": 62782.29,
+   "peak_vel_pct": null,
+   "peak_acc_pct": null,
+   "clamped_by_MotorLimit_samples": 0,
+   "start_end_diff_deg": 3.692
+  }
+ ],
+ "segments": [],
+ "exported": true
+}

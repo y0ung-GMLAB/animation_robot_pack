@@ -1,4 +1,4 @@
-{"title": "chicken_motion_composition5_zero", "type": "motion_header", "rotation_mode": "relative", "rotation_unit": "rad", "fields": ["frame", "time_sec", "id", "value"], "file_title": "chicken_motion_composition5_zero"}
+{"title": "chicken_motion_composition5_zero_v2", "type": "motion_header", "rotation_mode": "relative", "rotation_unit": "rad", "fields": ["frame", "time_sec", "id", "value"], "file_title": "chicken_motion_composition5_zero_v2"}
 [1, 0.02, "head_yaw", 0.0, "crank_l", 0.0, "crank_r", 0.0, "crank_f", 0.0]
 [2, 0.04, "head_yaw", 0.0, "crank_l", 0.0, "crank_r", 0.0, "crank_f", 0.0]
 [3, 0.06, "head_yaw", 0.0, "crank_l", 0.0, "crank_r", 0.0, "crank_f", 0.0]

@@ -106,3 +106,11 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
   - composition5 시뮬 (pp) · 정지 토크 거의 0 · 최대 토크 약 2.1 Nm (XM430 정지 토크 4.1 Nm) · 큰 추종 오차는 원본 CSV 의 튀는 구간(700 °/s 안팎)에서만
 - `catalog/motors.yaml` · XM430-W350-R (4.1 Nm · 46 rpm) · HLS3915M (1.0.1 · 사용자 확인 형번 · 14.2 kg·cm = 1.39 Nm · 100 rpm · 판매처 사양) · 토크 한계 = model.xml actuator ctrlrange
 - drive · 276 °/s (XM430-W350 무부하 46 rpm) · 10000 °/s² · servo_bw 8 Hz 추정
+
+## chicken/animations
+
+- `chicken_motion_composition5.json` · 옛 스택 티칭 CSV `motion-composition5.csv` (71.04 s) 를 리그로 옮긴 것 · 값 = 쉬는 자세(리그 rest) 대비 · 원본 `D:\blender_files\chicken\chicken_motion_composition5.blend`
+- `chicken_motion_composition5_zero_v2.json` · 위 파일에서 1프레임 값을 뺀 것 (1프레임 = 0) · **chicken2 (`http://chicken2.local:8000`) 재생 목록에 등록된 파일** · chicken2 기준점을 1프레임 자세에서 잡았기 때문
+- v2 (2026-10-29) · chicken2 조인트 매핑 crank_f 범위 ±23.82° 를 넘던 깊은 구간 5개 (−35 ~ −44.5°) 를 자르지 않고 구간째 비율로 얕게 (×0.52 ~ 0.67 · 바닥 −23.32°) · 구간 안 굴곡·타이밍 그대로 · Blender 는 `Neck_Base` 키만 고침 · 옛 `_zero` 는 chicken2 에서 지움(프로젝트 휴지통)
+- 원본 CSV 의 튀는 구간(머리 좌우 · crank_f 최대 약 1300 °/s)은 그대로 · 모터 본 속도·가속 상한 속성이 0 이라 내보내기 속도 검사는 안 함
+- `report/` · 내보내기 리포트 (composition5 · v2 반영)

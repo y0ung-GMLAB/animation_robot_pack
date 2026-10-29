@@ -1,0 +1,48 @@
+[
+ {
+  "bone": "Head_Yaw",
+  "joint_name": "head_yaw",
+  "blender_limit_deg": [
+   -27.0,
+   37.0
+  ],
+  "export_scale": 1.0,
+  "export_limit_deg": [
+   -27.0,
+   37.0
+  ],
+  "clip_min_deg": -26.637,
+  "clip_max_deg": 36.835,
+  "first_frame_deg": 1.846
+ },
+ {
+  "bone": "Crank_L",
+  "joint_name": "crank_l",
+  "blender_limit_deg": null,
+  "export_scale": 1.0,
+  "export_limit_deg": null,
+  "clip_min_deg": -2.567,
+  "clip_max_deg": 16.598,
+  "first_frame_deg": 7.016
+ },
+ {
+  "bone": "Crank_R",
+  "joint_name": "crank_r",
+  "blender_limit_deg": null,
+  "export_scale": 1.0,
+  "export_limit_deg": null,
+  "clip_min_deg": -18.62,
+  "clip_max_deg": -0.686,
+  "first_frame_deg": -10.444
+ },
+ {
+  "bone": "Crank_F",
+  "joint_name": "crank_f",
+  "blender_limit_deg": null,
+  "export_scale": 1.0,
+  "export_limit_deg": null,
+  "clip_min_deg": -7.138,
+  "clip_max_deg": 39.127,
+  "first_frame_deg": 16.182
+ }
+]
