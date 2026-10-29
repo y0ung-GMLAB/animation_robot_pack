@@ -87,7 +87,7 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
 
 ## chicken/chicken_pack
 
-- 닭 오브제 팩 1.0.0 (2026-10-29) · 축 4개 · `head_yaw` (FEETECH · TTL) · `crank_l` · `crank_r` · `crank_f` (XM430-W350-R · RS-485) · 감속기 없음 · ratio 1
+- 닭 오브제 팩 1.0.1 (2026-10-29) · 축 4개 · `head_yaw` (FEETECH HLS3915M · TTL) · `crank_l` · `crank_r` · `crank_f` (XM430-W350-R · RS-485) · 감속기 없음 · ratio 1
 - 애니메이션 값 = 모터 출력축 각도 · 쉬는 자세(리그 rest) 대비 · 부호 = Blender 크랭크 본 + 방향 (실물 방향은 PC 조인트 매핑 invert 로)
 - `range_deg` · 조종 본 리밋 안에서 크랭크가 실제로 닿는 범위 · head_yaw −27..37 · crank_l −8.5..49.2 · crank_r −49.2..8.5 · crank_f −71.0..40.2
 - `scene.glb` (웹 「Blender 뷰」 · 22 MB) · 원본 `D:\blender_files\chicken\chicken.blend` 모델만 · 목 실리콘 B-bone 12분할은 glb 에서 본 13개 (변형 차이 0)
@@ -101,8 +101,8 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
     - 리그 조종 본 리밋 구석 일부(약 1 %)는 기구 특이점 너머 · 같은 크랭크 값이면 실물은 쉬는 자세 쪽 가지로 감 · 웹 뷰는 실물 쪽을 보여 줌
   - 리그·메쉬를 바꿀 때만 다시 만듦 (만드는 스크립트 `D:\blender_files\chicken\pack_build\`)
 - `model.xml` · 고정 베이스 · 고리 3개 = equality connect (옆 로드 L/R → 머리 · 앞 링크 → 목 받침) · 바디 좌표 = 리그 쉬는 자세 월드 (m)
-  - 질량 = 부품 메쉬 부피 × 재질 밀도 추정 (강 7850 · 알루미늄 2700 · 출력물 1240) · XM430 82 g · 머리 좌우 모터 35 g 가정 · 껍데기 PLA 2 mm · 목 실리콘 3 mm
+  - 질량 = 부품 메쉬 부피 × 재질 밀도 추정 (강 7850 · 알루미늄 2700 · 출력물 1240) · XM430 82 g · HLS3915M 35 g · 껍데기 PLA 2 mm · 목 실리콘 3 mm
   - 바디 질량 · 머리 좌우 171 g · 머리 46 g · 목 받침 409 g · 크랭크 각 10 g 안팎 · 전체 2.4 kg
   - composition5 시뮬 (pp) · 정지 토크 거의 0 · 최대 토크 약 2.1 Nm (XM430 정지 토크 4.1 Nm) · 큰 추종 오차는 원본 CSV 의 튀는 구간(700 °/s 안팎)에서만
-- `catalog/motors.yaml` · XM430-W350-R 확정 · **머리 좌우 FEETECH 형번 미확인** (`FEETECH_HEAD_YAW` · CAD 대체 모델 XC330-T181 값 · confirmed false)
+- `catalog/motors.yaml` · XM430-W350-R (4.1 Nm · 46 rpm) · HLS3915M (1.0.1 · 사용자 확인 형번 · 14.2 kg·cm = 1.39 Nm · 100 rpm · 판매처 사양) · 토크 한계 = model.xml actuator ctrlrange
 - drive · 276 °/s (XM430-W350 무부하 46 rpm) · 10000 °/s² · servo_bw 8 Hz 추정

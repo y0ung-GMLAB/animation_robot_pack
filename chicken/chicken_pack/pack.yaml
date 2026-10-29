@@ -1,5 +1,5 @@
 name: chicken
-version: "1.0.0"
+version: "1.0.1"
 created: "2026-10-29"
 # Blender 뷰 · 모델만 (애니메이션 없음) · 리그 D:\blender_files\chicken\chicken.blend
 #   joints  · 크랭크 3개 · 머리 좌우 = 애니메이션 값으로 노드 1:1 회전

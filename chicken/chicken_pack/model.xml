@@ -74,7 +74,7 @@
   </equality>
   <actuator>
     <!-- 토크 한계 = 카탈로그 stall_torque_nm (12 V) -->
-    <motor name="act_head_yaw" joint="head_yaw" ctrlrange="-0.6 0.6" ctrllimited="true"/>
+    <motor name="act_head_yaw" joint="head_yaw" ctrlrange="-1.39 1.39" ctrllimited="true"/>
     <motor name="act_crank_l" joint="crank_l" ctrlrange="-4.1 4.1" ctrllimited="true"/>
     <motor name="act_crank_r" joint="crank_r" ctrlrange="-4.1 4.1" ctrllimited="true"/>
     <motor name="act_crank_f" joint="crank_f" ctrlrange="-4.1 4.1" ctrllimited="true"/>

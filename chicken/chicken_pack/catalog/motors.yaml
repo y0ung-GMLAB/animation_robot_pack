@@ -12,11 +12,12 @@ XM430-W350-R:
   confirmed: true      # 사용자 2026-10-29 · W350
   source: https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/
 
-FEETECH_HEAD_YAW:
+HLS3915M:
   vendor: FEETECH
   type: feetech
   bus: TTL
-  max_rpm: 114          # 형번 미확인 · CAD 대체 모델 XC330-T181 값 (12 V) 그대로
-  stall_torque_nm: 0.6
-  confirmed: false
-  note: 머리 좌우 · 실제 FEETECH 형번 확인 후 교체
+  max_rpm: 100           # 무부하 · 12 V
+  stall_torque_nm: 1.39  # 14.2 kg·cm · 12 V · 정격 4.5 kg·cm
+  mass_kg: 0.0358
+  confirmed: true        # 사용자 2026-10-29 · 형번 · 수치는 판매처 사양 (FEETECH 공식 데이터시트 미확인 · HL-3915 같은 제품)
+  source: https://evelta.com/hl-3915-c001-12v-14kg-cm-360deg-metal-gear-dual-axis-ttl-serial-bus-servo-motor/
