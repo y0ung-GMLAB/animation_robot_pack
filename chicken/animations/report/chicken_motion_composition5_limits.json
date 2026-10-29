@@ -3,46 +3,64 @@
   "bone": "Head_Yaw",
   "joint_name": "head_yaw",
   "blender_limit_deg": [
-   -27.0,
-   37.0
+   -28.846,
+   35.154
   ],
   "export_scale": 1.0,
   "export_limit_deg": [
-   -27.0,
-   37.0
+   -28.846,
+   35.154
   ],
-  "clip_min_deg": -26.637,
-  "clip_max_deg": 36.835,
-  "first_frame_deg": 1.846
+  "clip_min_deg": -28.484,
+  "clip_max_deg": 34.989,
+  "first_frame_deg": 0.0
  },
  {
   "bone": "Crank_L",
   "joint_name": "crank_l",
-  "blender_limit_deg": null,
+  "blender_limit_deg": [
+   -11.604,
+   11.604
+  ],
   "export_scale": 1.0,
-  "export_limit_deg": null,
-  "clip_min_deg": -2.567,
-  "clip_max_deg": 16.598,
-  "first_frame_deg": 7.016
+  "export_limit_deg": [
+   -11.604,
+   11.604
+  ],
+  "clip_min_deg": -9.583,
+  "clip_max_deg": 9.582,
+  "first_frame_deg": -0.0
  },
  {
   "bone": "Crank_R",
   "joint_name": "crank_r",
-  "blender_limit_deg": null,
+  "blender_limit_deg": [
+   -12.967,
+   12.967
+  ],
   "export_scale": 1.0,
-  "export_limit_deg": null,
-  "clip_min_deg": -18.62,
-  "clip_max_deg": -0.686,
-  "first_frame_deg": -10.444
+  "export_limit_deg": [
+   -12.967,
+   12.967
+  ],
+  "clip_min_deg": -8.176,
+  "clip_max_deg": 9.758,
+  "first_frame_deg": 0.0
  },
  {
   "bone": "Crank_F",
   "joint_name": "crank_f",
-  "blender_limit_deg": null,
+  "blender_limit_deg": [
+   -23.824,
+   23.824
+  ],
   "export_scale": 1.0,
-  "export_limit_deg": null,
-  "clip_min_deg": -7.138,
-  "clip_max_deg": 39.127,
-  "first_frame_deg": 16.182
+  "export_limit_deg": [
+   -23.824,
+   23.824
+  ],
+  "clip_min_deg": -23.32,
+  "clip_max_deg": 22.945,
+  "first_frame_deg": 0.0
  }
 ]
