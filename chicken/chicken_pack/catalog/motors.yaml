@@ -1,0 +1,22 @@
+# 모터 카탈로그 · 이 팩에서 쓰는 항목 · 단위 모터 출력축 기준 rpm, N·m
+# confirmed: false = 형번 추정 (현장 명판 확인 전)
+
+XM430-W350-R:
+  vendor: ROBOTIS
+  series: DYNAMIXEL X
+  type: dynamixel
+  bus: RS-485
+  max_rpm: 46          # 무부하 · 12 V
+  stall_torque_nm: 4.1 # 12 V
+  mass_kg: 0.082
+  confirmed: true      # 사용자 2026-10-29 · W350
+  source: https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/
+
+FEETECH_HEAD_YAW:
+  vendor: FEETECH
+  type: feetech
+  bus: TTL
+  max_rpm: 114          # 형번 미확인 · CAD 대체 모델 XC330-T181 값 (12 V) 그대로
+  stall_torque_nm: 0.6
+  confirmed: false
+  note: 머리 좌우 · 실제 FEETECH 형번 확인 후 교체

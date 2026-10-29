@@ -1,0 +1,15 @@
+name: chicken
+version: "1.0.0"
+created: "2026-10-29"
+# Blender 뷰 · 모델만 (애니메이션 없음) · 리그 D:\blender_files\chicken\chicken.blend
+#   joints  · 크랭크 3개 · 머리 좌우 = 애니메이션 값으로 노드 1:1 회전
+#   derived · 닫힌 고리(평행 목 · 앞 4절 링크)라 1:1 로 못 그리는 노드 · 크랭크 값 → 자세 표 (robot_web 수정 목록 159)
+#             표 1 crank_f → 목 받침 · 앞 링크 / 표 2 crank_l·r → UJ · 머리 · 옆 로드 / 표 3 crank_l·r · head_yaw → 목 실리콘 본 13개
+#             (실리콘 B-bone 12분할 = glb 에서는 본 13개 · 리그 IK 를 역으로 풀어 계산 · 리밋 안 임의 자세 400개 검증 노드 위치 p99 0.24 mm)
+scene_glb:
+  joints:
+    head_yaw: {node: Head_Yaw, axis: [0, 0, 1]}
+    crank_l:  {node: Crank_L, axis: [1, 0, 0]}
+    crank_r:  {node: Crank_R, axis: [1, 0, 0]}
+    crank_f:  {node: Crank_F, axis: [1, 0, 0]}
+  derived: derived.json

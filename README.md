@@ -15,8 +15,8 @@ floating/                              → 플로팅 헤드
       <애니메이션>.wav                 → 스피커 PC 웹(:8100) · 음원 업로드 · 「애니메이션별 음원」 에서 같은 이름 애니메이션에 연결
     floating1/ … floating4/            → N번 로봇 전용 테스트 애니메이션 (파일 이름 floating<N>_*)
     test/                              → 시험용 애니메이션 (공연용 아님 · 그 로봇 5축만)
-chicken/                               → 닭 오브제 (준비 중)
-  chicken_pack/                        → 로봇 팩
+chicken/                               → 닭 오브제 (jazzy · RPi 5)
+  chicken_pack/                        → 로봇 팩 1.0.0 · 아래 「chicken/chicken_pack」
   animations/                          → 애니메이션
 ```
 
@@ -84,3 +84,25 @@ chicken/                               → 닭 오브제 (준비 중)
   - **floating3 조인트 매핑 눈 3축 (`f3_eye_pitch` · `f3_eye_yaw_l` · `f3_eye_yaw_r`) 의 최대 속도 · 가속을 그 파일 값 이상으로 올린 뒤 재생** (그대로면 PC 검사에 걸림)
   - 내보내기 검사 · 오류 0 · MotorLimit 0 · 눈 가속은 상한의 90 % 까지 씀 (경고는 정상)
   - 원본 · `D:\blender_files\floating\test\ny_floating_f3eye_{15,20,25}_15s.blend` (리그 4대 · f3 눈 본 속도 상한 속성도 그 값)
+
+## chicken/chicken_pack
+
+- 닭 오브제 팩 1.0.0 (2026-10-29) · 축 4개 · `head_yaw` (FEETECH · TTL) · `crank_l` · `crank_r` · `crank_f` (XM430-W350-R · RS-485) · 감속기 없음 · ratio 1
+- 애니메이션 값 = 모터 출력축 각도 · 쉬는 자세(리그 rest) 대비 · 부호 = Blender 크랭크 본 + 방향 (실물 방향은 PC 조인트 매핑 invert 로)
+- `range_deg` · 조종 본 리밋 안에서 크랭크가 실제로 닿는 범위 · head_yaw −27..37 · crank_l −8.5..49.2 · crank_r −49.2..8.5 · crank_f −71.0..40.2
+- `scene.glb` (웹 「Blender 뷰」 · 22 MB) · 원본 `D:\blender_files\chicken\chicken.blend` 모델만 · 목 실리콘 B-bone 12분할은 glb 에서 본 13개 (변형 차이 0)
+  - `scene_glb.joints` · 크랭크 3개 · 머리 좌우 = 노드 1:1 회전
+  - `scene_glb.derived` = `derived.json` (8.6 MB · robot_web 수정 목록 159 · jazzy 에 있음) · 닫힌 고리라 1:1 로 못 그리는 노드
+    - 표 1 `crank_f` (61) → `Neck_Base` · `Link_F`
+    - 표 2 `crank_l` · `crank_r` (49 × 49) → `UJ_Cross` · `Neck` · `Rod_L` · `Rod_R`
+    - 표 3 `crank_l` · `crank_r` · `head_yaw` (49 × 49 × 5) → `SkinSeg_00` … `SkinSeg_12` (목 실리콘)
+    - 값 = 리그 IK 를 역으로 풀어 계산 (쉬는 자세와 같은 가지 · 못 닿는 격자점은 경계에서 1차 연장)
+    - 검증 · 리밋 안 임의 자세 400개를 웹과 같은 보간으로 다시 그림 · 노드 위치 p99 0.24 mm (최대 1 mm) · 회전 p99 0.56° (최대 2.7° · 목 상하+ 기울기 ±27° 구석) · 실리콘 정점 최대 0.37 mm
+    - 리그 조종 본 리밋 구석 일부(약 1 %)는 기구 특이점 너머 · 같은 크랭크 값이면 실물은 쉬는 자세 쪽 가지로 감 · 웹 뷰는 실물 쪽을 보여 줌
+  - 리그·메쉬를 바꿀 때만 다시 만듦 (만드는 스크립트 `D:\blender_files\chicken\pack_build\`)
+- `model.xml` · 고정 베이스 · 고리 3개 = equality connect (옆 로드 L/R → 머리 · 앞 링크 → 목 받침) · 바디 좌표 = 리그 쉬는 자세 월드 (m)
+  - 질량 = 부품 메쉬 부피 × 재질 밀도 추정 (강 7850 · 알루미늄 2700 · 출력물 1240) · XM430 82 g · 머리 좌우 모터 35 g 가정 · 껍데기 PLA 2 mm · 목 실리콘 3 mm
+  - 바디 질량 · 머리 좌우 171 g · 머리 46 g · 목 받침 409 g · 크랭크 각 10 g 안팎 · 전체 2.4 kg
+  - composition5 시뮬 (pp) · 정지 토크 거의 0 · 최대 토크 약 2.1 Nm (XM430 정지 토크 4.1 Nm) · 큰 추종 오차는 원본 CSV 의 튀는 구간(700 °/s 안팎)에서만
+- `catalog/motors.yaml` · XM430-W350-R 확정 · **머리 좌우 FEETECH 형번 미확인** (`FEETECH_HEAD_YAW` · CAD 대체 모델 XC330-T181 값 · confirmed false)
+- drive · 276 °/s (XM430-W350 무부하 46 rpm) · 10000 °/s² · servo_bw 8 Hz 추정
