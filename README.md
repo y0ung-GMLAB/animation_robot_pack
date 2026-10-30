@@ -16,7 +16,7 @@ floating/                              → 플로팅 헤드
     floating1/ … floating4/            → N번 로봇 전용 테스트 애니메이션 (파일 이름 floating<N>_*)
     test/                              → 시험용 애니메이션 (공연용 아님 · 그 로봇 5축만)
 chicken/                               → 닭 오브제 (jazzy · RPi 5)
-  chicken_pack/                        → 로봇 팩 1.1.2 · 아래 「chicken/chicken_pack」
+  chicken_pack/                        → 로봇 팩 1.1.3 · 아래 「chicken/chicken_pack」
   animations/                          → 애니메이션
 ```
 
@@ -87,6 +87,49 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
 
 ## chicken/chicken_pack
 
+- 닭 오브제 팩 **1.1.3** (2026-10-30) · 축 4개 · `head_yaw` (FEETECH HLS3915M · TTL) · `crank_l` · `crank_r` · `crank_f` (XM430-W350-R · RS-485) · 감속기 없음 · ratio 1
+- **실측 치수 (1.1.3)** · 앞 링크 39.5 mm (목 쪽 볼 = 목 받침 위쪽 `horn_holder` 구멍 + 스페이서 7.41 mm → 정면에서 수직) · 옆 로드 L/R 109 → 115.74 mm · 크랭크 반지름은 CAD 27 mm 그대로
+- **값 0 = 구조 중앙** (모터마다 상한·하한의 가운데) · 1.1.3 에서 자세를 다시 잡음 (Fusion `#02닭_261013` 에서 맞춘 자세와 같음)
+  - L/R · 머리를 이전 0 보다 18° 들어 머리 아래 브래킷(`2` · M3 볼트 · 너트)이 목 기둥 `8_FIX` 와 안 부딪히게 · L/R 볼 좌우 대칭
+  - F · 사용자가 짚은 두 구조 끝 (목 받침 `hinge_A` 바닥면이 바닥판과 평행 / `8_FIX` 앞면 모서리가 F 모터에 닿기 직전) 의 크랭크 가운데 · 웹 ±23.5 는 여유 준 값
+    - 모델 치수로는 두 끝 = 크랭크 ±33.9° (웹 ±23.5 와 차이 큼 → 실물 F 혼 길이가 27 mm 보다 길 수 있음 · 혼 길이 재면 다시 맞춤)
+  - yaw · 0 = yaw 모터 상자 앞면이 정면 · yaw 축 = 머리 40T 기어 가운데 구멍
+  - Blender · 리그 쉬는 자세 = 0 자세 · 템플릿 1프레임 키 전부 0 · 브래킷 `2` · 볼트 · 너트는 머리(Neck) 본 · 앞 링크 로드엔드 옆면은 혼과 평행
+  - + 방향 = Blender 본 + (chicken2 조인트 매핑 invert true · 사용자가 조그로 확인)
+- `range_deg` = 실물에서 잰 구조 범위를 0.5° 단위로 자른 값 (대칭) · head_yaw ±48.5 · crank_l ±12.5 · crank_r ±12.5 · crank_f ±23.5 · Blender 크랭크 본에도 같은 값 `MotorLimit` (음소거 · 검사 전용)
+- Fusion 모델은 쉘(`CK_Shell` · 늘어나지 않음)에 맞춰 원래 CAD 자세로 접어 둠 (yaw 모터 = 쉘 볼트 구멍 위치) · Fusion 조인트 0 = 그 접힌 자세 (실물 0 아님 · 실물 0 은 이 팩·Blender 기준)
+- `scene.glb` (웹 「Blender 뷰」 · 1.0.13 · robot_web 수정 목록 98) · 헤드 4대 모델만 (디자이너 얼굴 + 눈 · 매장 없음 · 15만 삼각형 · 텍스처 1024) · **애니메이션 없음** · 21 MB · 4개 팩에 같은 파일
+  - 웹이 지금 보는(재생 중인) 애니메이션 json 값으로 노드를 돌림 → **새 애니메이션마다 glb 다시 만들 필요 없음** (dir test 도 바로 보임 · json 에 없는 로봇은 기본 자세)
+  - `pack.yaml` `scene_glb.joints` · 20개 (`f1_neck_yaw` … `f4_eye_yaw_r`) · 노드 이름 = 조인트 이름 · 축 = 노드 로컬 (목·눈 좌우 [0, 0, 1] · 목·눈 상하 [1, 0, 0])
+  - 노드 기본 자세 = 모든 값 0 · 웹 방식(기본 자세 × 축 회전)으로 9min 전체를 돌려 예전 구운 장면과 같음 확인 (차이 0.00002°)
+  - 얼굴·눈 메쉬나 리그를 바꿀 때만 다시 만듦
+- 모델 · `floating/floating_1800/sim/fh_1800_wires_R011.xml` (천장 원판 3점 수직 와이어)
+- drive · PC 모터 설정 = 플랫폼 기본값 18000 deg/s · 180000 deg/s² (모터축)
+
+## animations/floating1 ~ floating4
+
+- 로봇 전용 테스트 애니메이션 · 팩은 `floating<N>_pack` 사용
+- `floating<N>_dir_test` (방향 확인) · 4대 모두 같은 움직임 · id 만 `f{N}_*` (그 로봇 5축만 들어 있음)
+  - 17 s (850 프레임) · 목 좌우 +5 → 목 상하 −5 → 눈 상하 −5 → 눈 좌우 +7 (눈알 각도) 차례로 쌓고 1 s 씩 유지 → 모두 0 · 속도 상한 안 (검사 오류·경고 0)
+  - 원본 · `D:\blender_files\floating\test\ny_floating_dir_test.blend` (리그 4대 · 내보낸 20축을 로봇별 5축으로 나눔)
+
+## la_packs
+
+- LA 3대용 팩 · `la_packs/README.md`
+
+## animations/test
+
+- 시험용 애니메이션 · 공연용 아님 · 그 로봇 5축만 들어 있음 (다른 로봇 PC 에 올려도 안 움직임)
+- `floating3_eye_15` · `_20` · `_25` (2026-10-15 · ny floating3) · 눈 속도를 단계적으로 올려 보는 시험
+  - 15 s (751 프레임) · 시작 자세 0 · 원본 = `ny_floating_90s_v3` (ny 나레이션 v3 시안) 앞 15 s 의 f3 · 고개는 v3 그대로 (상한 9 · 14 / 6 · 10 안)
+  - 눈 · 한 곳을 보고 멈춰 있다가 (0.5 ~ 2.2 s) 짧게 튀어 다음 곳으로 (사카드 느낌) · 멈춰 있는 동안 고개가 돌면 눈이 반대로 돌아 시선 유지
+  - 숫자 = 눈 속도 상한 · 가속 상한은 짝으로 · 15 °/s · 40 °/s² / 20 · 70 / 25 · 100 (기존 공연 눈 10 · 22) · 세 파일 점프 타이밍 같음 · 빠르기만 다름
+  - **floating3 조인트 매핑 눈 3축 (`f3_eye_pitch` · `f3_eye_yaw_l` · `f3_eye_yaw_r`) 의 최대 속도 · 가속을 그 파일 값 이상으로 올린 뒤 재생** (그대로면 PC 검사에 걸림)
+  - 내보내기 검사 · 오류 0 · MotorLimit 0 · 눈 가속은 상한의 90 % 까지 씀 (경고는 정상)
+  - 원본 · `D:\blender_files\floating\test\ny_floating_f3eye_{15,20,25}_15s.blend` (리그 4대 · f3 눈 본 속도 상한 속성도 그 값)
+
+## chicken/chicken_pack
+
 - 닭 오브제 팩 **1.1.2** (2026-10-30) · 축 4개 · `head_yaw` (FEETECH HLS3915M · TTL) · `crank_l` · `crank_r` · `crank_f` (XM430-W350-R · RS-485) · 감속기 없음 · ratio 1
 - **값 0 = 구조 중앙** · 모터마다 구조 상한·하한의 가운데 = chicken2 기준점 = composition5 1프레임 자세 (1.1.0 · 이전 1.0.x 는 0 = CAD 자세에서 머리만 편 리그 쉬는 자세)
   - Blender · 모터 본(Crank_L/R/F + 로드·링크 · Head_Yaw) 쉬는 자세를 그 자세로 옮김 · 조종 본 Neck_Base · Neck 은 기구 각도 그대로 (UJ 축이 틀어지지 않게) · 템플릿 1프레임 키 = 구조 중앙 자세
@@ -101,7 +144,7 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
   - `scene_glb.derived` = `derived.json` (8.6 MB · robot_web 수정 목록 159 · jazzy 에 있음) · 닫힌 고리라 1:1 로 못 그리는 노드
     - 표 1 `crank_f` (61) → `Neck_Base` · `Link_F` / 표 2 `crank_l` · `crank_r` (49 × 49) → `UJ_Cross` · `Neck` · `Rod_L` · `Rod_R` / 표 3 `crank_l` · `crank_r` · `head_yaw` (49 × 49 × 5) → `SkinSeg_00` … `SkinSeg_12` (목 실리콘)
     - 격자 = PC 범위 + 2° · 값 = 리그 IK 를 역으로 풀어 계산 (구조 중앙과 같은 가지)
-    - 검증 · PC 범위 안 임의 자세 400개를 웹과 같은 보간으로 다시 그림 · 노드 위치 최대 0.04 mm · 회전 최대 0.12° · 실리콘 정점 최대 0.03 mm (1.1.2)
+    - 검증 · PC 범위 안 임의 자세 400개를 웹과 같은 보간으로 다시 그림 · 노드 위치 p99 0.05 mm · 회전 p99 0.25° · 실리콘 정점 최대 0.02 mm (1.1.3) · 큰 오차는 머리를 36~40° 든 극단(크랭크가 다른 가지로 넘어감)에서만
   - 리그·메쉬를 바꿀 때만 다시 만듦 (만드는 스크립트 `D:\blender_files\chicken\pack_build\`)
 - `model.xml` · 고정 베이스 · 구조 중앙 자세 = 관절 0 · 고리 3개 = equality connect (옆 로드 L/R → 머리 · 앞 링크 → 목 받침) · 바디 좌표 = 그 자세 월드 (m)
   - 질량 = 부품 메쉬 부피 × 재질 밀도 추정 (강 7850 · 알루미늄 2700 · 출력물 1240) · XM430 82 g · HLS3915M 35 g · 껍데기 PLA 2 mm · 목 실리콘 3 mm · 전체 2.4 kg
@@ -114,6 +157,7 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
 - `chicken_motion_composition5.json` · 옛 스택 티칭 CSV `motion-composition5.csv` (71.04 s) 를 리그로 옮긴 것 · **값 0 = 구조 중앙 (1프레임 = 0)** · chicken2 (`http://chicken2.local:8000`) 재생 목록 · 원본 `D:\blender_files\chicken\chicken_motion_composition5.blend`
 - crank_f 가 chicken2 범위 ±23.82° 를 넘던 깊은 구간 5개 (−35 ~ −44.5°) 는 자르지 않고 구간째 비율로 얕게 (×0.52 ~ 0.67 · 바닥 −23.32°) · 구간 안 굴곡·타이밍 그대로 · Blender 는 `Neck_Base` 키만 고침
 - 2026-10-30 앞 링크 실물 반영 (팩 1.1.2) · 모터 값(json 4축)은 그대로 두고 (실물에서 재생 확인한 값 · 원본 CSV 도 실물 녹화값) Blender `Neck_Base` 키만 새 링크로 다시 풀었음 → 목 받침 −15.2 ~ +3.2° 가 −11.0 ~ +1.8° 로 (실물 움직임과 같게) · 다시 내보낸 값 = 이 json (2.4e-5 rad 안) 이라 파일·report 그대로
+- 2026-10-30 실측·0 자세 다시 잡음 (팩 1.1.3) · 모터 값(json 4축)은 그대로 · Blender 조종 본 키만 새 리그로 다시 풀었음 (다시 계산한 모터 값 = json 0.001° 안)
 - 이전 이름 `_zero` · `_zero_v2` (1프레임 값을 뺀 사본) 는 1.1.0 부터 필요 없음 · 레포·chicken2 에서 지움
 - 원본 CSV 의 튀는 구간(머리 좌우 · crank_f 최대 약 1300 °/s)은 그대로 · 모터 본 속도·가속 상한 속성이 0 이라 내보내기 속도 검사는 안 함
 - `report/` · 내보내기 리포트

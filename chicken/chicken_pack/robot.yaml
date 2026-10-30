@@ -1,14 +1,14 @@
 # 닭 오브제 · 직렬 서보 4개 · 애니메이션 값 = 모터 출력축 각도 · 감속기 없음
 # 값 0 = 구조 중앙 (모터마다 구조 상한·하한의 가운데 · chicken2 기준점 · 팩 1.1.0 · 2026-10-29) · + 방향 = Blender 본 + (chicken2 invert true 로 확인)
 # 축 순서 = 옛 컨트롤러 번호 0..3 · head_yaw FEETECH HLS3915M (TTL · FE-URT-2) · crank_l · crank_r · crank_f XM430-W350-R (RS-485 · U2D2)
-# range_deg · chicken2 조인트 매핑 (실물에서 잰 구조 범위 · 대칭) · Blender 크랭크 본 MotorLimit(음소거 · 검사 전용)과 같음
+# range_deg · 실물에서 잰 구조 범위 (0.5° 단위로 자름 · 대칭 · 2026-10-30) · Blender 크랭크 본 MotorLimit(음소거 · 검사 전용)과 같음
 # drive · 모터 출력축 · XM430-W350 무부하 46 rpm (12 V) = 276 °/s · 가속은 다이나믹셀 기본(제한 없음) 대신 큰 값
 # servo_bw_hz · 다이나믹셀 위치 제어 기본 게인 기준 추정
 axes:
-  - {joint: head_yaw, motion_id: "head_yaw", motor: HLS3915M,         reducer: null, ratio: 1, range_deg: [-48.86715, 48.86715], servo_bw_hz: 8}
-  - {joint: crank_l,  motion_id: "crank_l",  motor: XM430-W350-R,     reducer: null, ratio: 1, range_deg: [-11.60435, 11.60435], servo_bw_hz: 8}
-  - {joint: crank_r,  motion_id: "crank_r",  motor: XM430-W350-R,     reducer: null, ratio: 1, range_deg: [-12.967, 12.967], servo_bw_hz: 8}
-  - {joint: crank_f,  motion_id: "crank_f",  motor: XM430-W350-R,     reducer: null, ratio: 1, range_deg: [-23.82415, 23.82415], servo_bw_hz: 8}
+  - {joint: head_yaw, motion_id: "head_yaw", motor: HLS3915M,         reducer: null, ratio: 1, range_deg: [-48.5, 48.5], servo_bw_hz: 8}
+  - {joint: crank_l,  motion_id: "crank_l",  motor: XM430-W350-R,     reducer: null, ratio: 1, range_deg: [-12.5, 12.5], servo_bw_hz: 8}
+  - {joint: crank_r,  motion_id: "crank_r",  motor: XM430-W350-R,     reducer: null, ratio: 1, range_deg: [-12.5, 12.5], servo_bw_hz: 8}
+  - {joint: crank_f,  motion_id: "crank_f",  motor: XM430-W350-R,     reducer: null, ratio: 1, range_deg: [-23.5, 23.5], servo_bw_hz: 8}
 drive: {profile_velocity_deg_s: 276, profile_accel_deg_s2: 10000}
 env:
   settle_body: base      # 고정 베이스 (free joint 없음 → 정착 감쇠 생략)
