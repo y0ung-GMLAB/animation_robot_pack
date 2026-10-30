@@ -1,64 +1,65 @@
 <mujoco model="chicken_objet">
   <!-- 닭 오브제 · 리그 D:\blender_files\chicken\chicken.blend 1프레임(구조 중앙) 자세 월드 좌표 (m · Z 위 · 정면 -Y) · 바디 pos 0
+       앞 링크 48.82 mm · 목 쪽 볼 = 목 받침 위쪽 horn_holder 구멍 (실물 · 1.1.2 · 이전 CAD 29 mm)
        고리 3개 = equality connect (옆 로드 L/R → 머리 · 앞 링크 → 목 받침) · 질량 = 메쉬 부피 × 재질 밀도 추정 · 모터 실제 무게
        관절값 0 = 구조 중앙 (chicken2 기준점) = 애니메이션 0 · + 방향 = 애니메이션 값 + 방향 -->
   <compiler angle="radian" meshdir="meshes" boundmass="0.001" boundinertia="1e-8"/>
   <option timestep="0.0002" gravity="0 0 -9.81" integrator="implicitfast"/>
   <visual><global offwidth="1280" offheight="960"/></visual>
-  <asset><mesh name="m_base" file="base.stl"/><mesh name="m_crank_f" file="crank_f.stl"/><mesh name="m_rod_r" file="rod_r.stl"/><mesh name="m_uj_cross" file="uj_cross.stl"/><mesh name="m_head" file="head.stl"/><mesh name="m_head_yaw" file="head_yaw.stl"/><mesh name="m_rod_l" file="rod_l.stl"/><mesh name="m_link_f" file="link_f.stl"/><mesh name="m_crank_r" file="crank_r.stl"/><mesh name="m_neck_base" file="neck_base.stl"/><mesh name="m_crank_l" file="crank_l.stl"/><mesh name="m_shell_base" file="shell_base.stl"/><mesh name="m_shell_head_yaw" file="shell_head_yaw.stl"/></asset>
+  <asset><mesh name="m_link_f" file="link_f.stl"/><mesh name="m_head" file="head.stl"/><mesh name="m_base" file="base.stl"/><mesh name="m_rod_r" file="rod_r.stl"/><mesh name="m_crank_l" file="crank_l.stl"/><mesh name="m_neck_base" file="neck_base.stl"/><mesh name="m_rod_l" file="rod_l.stl"/><mesh name="m_crank_r" file="crank_r.stl"/><mesh name="m_crank_f" file="crank_f.stl"/><mesh name="m_uj_cross" file="uj_cross.stl"/><mesh name="m_head_yaw" file="head_yaw.stl"/><mesh name="m_shell_base" file="shell_base.stl"/><mesh name="m_shell_head_yaw" file="shell_head_yaw.stl"/></asset>
   <default><geom contype="0" conaffinity="0" density="0"/></default>
   <worldbody>
     <light pos="0.3 -0.8 1.2" dir="-0.2 0.6 -1"/>
     <geom name="floor" type="plane" pos="0 0 -0.1639" size="1 1 0.05" rgba="0.6 0.6 0.6 1"/>
     <body name="base" pos="0 0 0">
-      <inertial pos="-0.000391882 -0.0335398 -0.0104289" mass="1.73461" fullinertia="0.0218483 0.0167645 0.0120515 -0.000209422 -5.76598e-05 -0.00200718"/>
+      <inertial pos="-0.000392146 -0.0335812 -0.0105025" mass="1.73413" fullinertia="0.0218388 0.0167385 0.0120627 -0.000209435 -5.75707e-05 -0.002003"/>
       <geom type="mesh" mesh="m_base" rgba="0.45 0.45 0.5 1"/>
       <geom type="mesh" mesh="m_shell_base" rgba="0.95 0.88 0.75 0.3"/>
       <body name="crank_f" pos="0 0 0">
-        <inertial pos="-0.0215451 -0.143859 0.0735372" mass="0.00955233" fullinertia="1.52876e-06 1.12022e-06 4.9126e-07 2.05939e-08 -4.16225e-08 4.11487e-07"/>
+        <inertial pos="-0.0215451 -0.143859 0.0735372" mass="0.00955233" fullinertia="1.52875e-06 1.12022e-06 4.9126e-07 2.05939e-08 -4.16225e-08 4.11487e-07"/>
         <joint name="crank_f" type="hinge" pos="-0.0163103 -0.138692 0.0630884" axis="1 0 0" armature="0.01" damping="0.1" frictionloss="0.05"/>
         <geom type="mesh" mesh="m_crank_f" rgba="0.9 0.55 0.2 1"/>
         <body name="link_f" pos="0 0 0">
-          <inertial pos="-0.0163123 -0.137012 0.0823916" mass="0.00516384" fullinertia="6.1962e-07 9.59337e-08 5.41772e-07 2.13106e-10 3.34291e-10 1.83829e-07"/>
+          <inertial pos="-0.0126051 -0.132689 0.103394" mass="0.00656012" fullinertia="2.11687e-06 1.00408e-06 1.23078e-06 -2.38845e-07 -2.13322e-07 -1.03059e-06"/>
           <joint name="link_f_ball" type="ball" pos="-0.0163103 -0.150659 0.0872926" armature="1e-6" damping="0.0005"/>
           <geom type="mesh" mesh="m_link_f" rgba="0.7 0.7 0.7 1"/>
         </body>
       </body>
       <body name="neck_base" pos="0 0 0">
-        <inertial pos="-0.000135425 -0.0965483 0.0659636" mass="0.4074" fullinertia="0.000663297 0.000893202 0.000577628 -2.83513e-06 -9.73483e-08 0.000135259"/>
+        <inertial pos="-0.000131716 -0.0948241 0.0661296" mass="0.40728" fullinertia="0.000668389 0.000902402 0.000572144 -2.91623e-06 3.38081e-07 0.000128053"/>
         <joint name="neck_base_hinge" type="hinge" pos="-1.77636e-15 -0.0902523 0.0179272" axis="-1 -1.49206e-07 -2.31807e-08" damping="0.005"/>
         <geom type="mesh" mesh="m_neck_base" rgba="0.3 0.5 0.85 1"/>
         <body name="crank_l" pos="0 0 0">
-          <inertial pos="0.0124727 -0.0836007 0.074901" mass="0.0115887" fullinertia="1.95014e-06 1.41102e-06 7.4699e-07 -1.01559e-07 -1.67861e-07 -6.33811e-07"/>
-          <joint name="crank_l" type="hinge" pos="0.017145 -0.0910299 0.062621" axis="1 1.00486e-08 2.6745e-08" armature="0.01" damping="0.1" frictionloss="0.05"/>
+          <inertial pos="0.0124727 -0.0809265 0.0745247" mass="0.0115887" fullinertia="1.95014e-06 1.34995e-06 8.08056e-07 -1.09347e-07 -1.62895e-07 -6.62221e-07"/>
+          <joint name="crank_l" type="hinge" pos="0.017145 -0.0889255 0.0626081" axis="1 1.03706e-08 3.32906e-08" armature="0.01" damping="0.1" frictionloss="0.05"/>
           <geom type="mesh" mesh="m_crank_l" rgba="0.85 0.25 0.25 1"/>
           <body name="rod_l" pos="0 0 0">
-            <inertial pos="0.0140383 -0.097859 0.135999" mass="0.00955866" fullinertia="1.50581e-05 1.29016e-05 2.27882e-06 -3.29847e-07 7.91865e-07 5.30429e-06"/>
-            <joint name="rod_l_ball" type="ball" pos="0.017145 -0.077053 0.0857224" armature="1e-6" damping="0.0005"/>
+            <inertial pos="0.0140383 -0.0922933 0.136226" mass="0.00955866" fullinertia="1.50581e-05 1.33768e-05 1.80359e-06 -2.92211e-07 8.06512e-07 4.78136e-06"/>
+            <joint name="rod_l_ball" type="ball" pos="0.017145 -0.0738768 0.085026" armature="1e-6" damping="0.0005"/>
             <geom type="mesh" mesh="m_rod_l" rgba="0.7 0.7 0.7 1"/>
           </body>
         </body>
         <body name="crank_r" pos="0 0 0">
-          <inertial pos="-0.0131835 -0.0843477 0.0753242" mass="0.0115887" fullinertia="1.95016e-06 1.48427e-06 6.73709e-07 9.13084e-08 1.73539e-07 -5.89671e-07"/>
-          <joint name="crank_r" type="hinge" pos="-0.017855 -0.0910303 0.0626239" axis="-1 -1.54112e-07 5.73552e-08" armature="0.01" damping="0.1" frictionloss="0.05"/>
+          <inertial pos="-0.0131835 -0.0816528 0.0749827" mass="0.0115887" fullinertia="1.95016e-06 1.42703e-06 7.30948e-07 9.93747e-08 1.69049e-07 -6.25165e-07"/>
+          <joint name="crank_r" type="hinge" pos="-0.017855 -0.0889257 0.062611" axis="-1 -1.50316e-07 5.74968e-08" armature="0.01" damping="0.1" frictionloss="0.05"/>
           <geom type="mesh" mesh="m_crank_r" rgba="0.85 0.25 0.6 1"/>
           <body name="rod_r" pos="0 0 0">
-            <inertial pos="-0.015482 -0.0986478 0.137085" mass="0.00955865" fullinertia="1.50791e-05 1.30292e-05 2.13025e-06 2.41772e-07 -6.09493e-07 5.17673e-06"/>
-            <joint name="rod_r_ball" type="ball" pos="-0.017855 -0.0784586 0.086518" armature="1e-6" damping="0.0005"/>
+            <inertial pos="-0.015482 -0.0930301 0.137348" mass="0.00955865" fullinertia="1.50791e-05 1.34918e-05 1.66763e-06 2.12817e-07 -6.20196e-07 4.64139e-06"/>
+            <joint name="rod_r_ball" type="ball" pos="-0.017855 -0.0752434 0.0858869" armature="1e-6" damping="0.0005"/>
             <geom type="mesh" mesh="m_rod_r" rgba="0.7 0.7 0.7 1"/>
           </body>
         </body>
         <body name="uj_cross" pos="0 0 0">
-          <inertial pos="-0.000350138 -0.141478 0.197018" mass="8.45837e-05" fullinertia="3.41707e-10 3.41412e-10 3.17516e-10 1.75822e-13 -1.41179e-12 3.02344e-12"/>
-          <joint name="uj_tilt" type="hinge" pos="-0.000349997 -0.141459 0.197032" axis="0.0137803 0.933874 0.357337" damping="0.005"/>
+          <inertial pos="-0.00035014 -0.132992 0.19923" mass="8.45833e-05" fullinertia="3.41705e-10 3.41641e-10 3.17284e-10 1.09432e-13 -1.41837e-12 1.88657e-12"/>
+          <joint name="uj_tilt" type="hinge" pos="-0.000349998 -0.132972 0.199244" axis="0.0137804 0.949657 0.312987" damping="0.005"/>
           <geom type="mesh" mesh="m_uj_cross" rgba="0.9 0.85 0.3 1"/>
           <body name="head" pos="0 0 0">
-            <inertial pos="-0.00292743 -0.12101 0.144953" mass="0.0502137" fullinertia="5.55609e-05 4.36817e-05 6.21156e-05 2.61777e-07 -4.89167e-07 -1.17051e-05"/>
-            <joint name="uj_nod" type="hinge" pos="-0.000349997 -0.141459 0.197032" axis="-0.998339 -0.00714658 0.057177" damping="0.005"/>
+            <inertial pos="-0.00286507 -0.116139 0.146096" mass="0.0495741" fullinertia="5.39648e-05 4.22144e-05 6.09859e-05 2.37827e-07 -4.42645e-07 -1.09572e-05"/>
+            <joint name="uj_nod" type="hinge" pos="-0.000349998 -0.132972 0.199244" axis="-0.998339 -0.00444755 0.0574499" damping="0.005"/>
             <geom type="mesh" mesh="m_head" rgba="0.3 0.75 0.4 1"/>
             <body name="head_yaw" pos="0 0 0">
-              <inertial pos="6.19183e-05 -0.156467 0.184074" mass="0.173985" fullinertia="0.000166853 7.04184e-05 0.0001497 2.10206e-06 -2.45862e-07 1.98542e-06"/>
-              <joint name="head_yaw" type="hinge" pos="0.000335082 -0.145854 0.208435" axis="0.0559498 -0.357532 0.932224" armature="0.002" damping="0.02" frictionloss="0.01"/>
+              <inertial pos="6.40946e-05 -0.148802 0.187039" mass="0.173468" fullinertia="0.000163674 7.03108e-05 0.000146318 2.05871e-06 -3.45907e-07 5.33574e-06"/>
+              <joint name="head_yaw" type="hinge" pos="0.000335079 -0.136826 0.210841" axis="0.0559498 -0.313259 0.948018" armature="0.002" damping="0.02" frictionloss="0.01"/>
               <geom type="mesh" mesh="m_head_yaw" rgba="0.55 0.4 0.85 1"/>
               <geom type="mesh" mesh="m_shell_head_yaw" rgba="0.95 0.88 0.75 0.3"/>
             </body>
@@ -68,9 +69,9 @@
     </body>
   </worldbody>
   <equality>
-    <connect name="loop_rod_l" body1="rod_l" body2="head" anchor="0.0109315 -0.118665 0.186275" solref="0.002 1"/>
-    <connect name="loop_rod_r" body1="rod_r" body2="head" anchor="-0.0131088 -0.118837 0.187652" solref="0.002 1"/>
-    <connect name="loop_link_f" body1="link_f" body2="neck_base" anchor="-0.0163148 -0.123366 0.0774905" solref="0.002 1"/>
+    <connect name="loop_rod_l" body1="rod_l" body2="head" anchor="0.0109315 -0.11071 0.187426" solref="0.002 1"/>
+    <connect name="loop_rod_r" body1="rod_r" body2="head" anchor="-0.0131088 -0.110817 0.188809" solref="0.002 1"/>
+    <connect name="loop_link_f" body1="link_f" body2="neck_base" anchor="-0.0089 -0.114718 0.119495" solref="0.002 1"/>
   </equality>
   <actuator>
     <!-- 토크 한계 = 카탈로그 stall_torque_nm (12 V) -->

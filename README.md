@@ -16,7 +16,7 @@ floating/                              → 플로팅 헤드
     floating1/ … floating4/            → N번 로봇 전용 테스트 애니메이션 (파일 이름 floating<N>_*)
     test/                              → 시험용 애니메이션 (공연용 아님 · 그 로봇 5축만)
 chicken/                               → 닭 오브제 (jazzy · RPi 5)
-  chicken_pack/                        → 로봇 팩 1.0.0 · 아래 「chicken/chicken_pack」
+  chicken_pack/                        → 로봇 팩 1.1.2 · 아래 「chicken/chicken_pack」
   animations/                          → 애니메이션
 ```
 
@@ -87,17 +87,21 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
 
 ## chicken/chicken_pack
 
-- 닭 오브제 팩 **1.1.1** (2026-10-29) · 축 4개 · `head_yaw` (FEETECH HLS3915M · TTL) · `crank_l` · `crank_r` · `crank_f` (XM430-W350-R · RS-485) · 감속기 없음 · ratio 1
+- 닭 오브제 팩 **1.1.2** (2026-10-30) · 축 4개 · `head_yaw` (FEETECH HLS3915M · TTL) · `crank_l` · `crank_r` · `crank_f` (XM430-W350-R · RS-485) · 감속기 없음 · ratio 1
 - **값 0 = 구조 중앙** · 모터마다 구조 상한·하한의 가운데 = chicken2 기준점 = composition5 1프레임 자세 (1.1.0 · 이전 1.0.x 는 0 = CAD 자세에서 머리만 편 리그 쉬는 자세)
   - Blender · 모터 본(Crank_L/R/F + 로드·링크 · Head_Yaw) 쉬는 자세를 그 자세로 옮김 · 조종 본 Neck_Base · Neck 은 기구 각도 그대로 (UJ 축이 틀어지지 않게) · 템플릿 1프레임 키 = 구조 중앙 자세
   - + 방향 = Blender 본 + (chicken2 조인트 매핑 invert true · 사용자가 조그로 확인)
+- **앞 링크 = 실물 (1.1.2)** · 목 쪽 볼이 CAD 의 아래 블록(`J_Link_F_Neck`)이 아니라 목 받침 위쪽 `horn_holder` 구멍 (Fusion −8.90, 121.08, 106.806 mm) · 길이 29 → 48.82 mm (CAD 조립 자세에서 맞춰 늘린 값 · 실측 아님)
+  - 목 받침 지렛대 68.2 → 104.5 mm · crank_f 1° 에 목 받침 약 0.28° (이전 0.42°) · crank_f ±23.82° = 목 받침 −11.29 ~ +1.93° · crank_f 0 = 목 받침 −4.43°
+  - 목 받침은 +8° 근처에서 링크가 꺾임점이라 그 뒤로는 못 감 · Blender `Neck_Base` MotorLimit = crank_f 범위에 맞춘 −11.29 ~ +1.93°
+  - Fusion 모델은 아직 옛 링크 (사용자 확인 전)
 - `range_deg` = chicken2 조인트 매핑 (실물에서 잰 구조 범위 · 대칭) · head_yaw ±48.87 · crank_l ±11.60 · crank_r ±12.97 · crank_f ±23.82 · Blender 크랭크 본에도 같은 값 `MotorLimit` (음소거 · 검사 전용 · 내보내기가 넘은 샘플 수를 셈)
 - `scene.glb` (웹 「Blender 뷰」 · 22 MB) · 원본 `D:\blender_files\chicken\chicken.blend` 모델만 · 목 실리콘 B-bone 12분할은 glb 에서 본 13개 (변형 차이 0)
   - `scene_glb.joints` · 크랭크 3개 · 머리 좌우 = 노드 1:1 회전
   - `scene_glb.derived` = `derived.json` (8.6 MB · robot_web 수정 목록 159 · jazzy 에 있음) · 닫힌 고리라 1:1 로 못 그리는 노드
     - 표 1 `crank_f` (61) → `Neck_Base` · `Link_F` / 표 2 `crank_l` · `crank_r` (49 × 49) → `UJ_Cross` · `Neck` · `Rod_L` · `Rod_R` / 표 3 `crank_l` · `crank_r` · `head_yaw` (49 × 49 × 5) → `SkinSeg_00` … `SkinSeg_12` (목 실리콘)
     - 격자 = PC 범위 + 2° · 값 = 리그 IK 를 역으로 풀어 계산 (구조 중앙과 같은 가지)
-    - 검증 · PC 범위 안 임의 자세 400개를 웹과 같은 보간으로 다시 그림 · 노드 위치 최대 0.02 mm · 회전 최대 0.08° · 실리콘 정점 최대 0.03 mm
+    - 검증 · PC 범위 안 임의 자세 400개를 웹과 같은 보간으로 다시 그림 · 노드 위치 최대 0.04 mm · 회전 최대 0.12° · 실리콘 정점 최대 0.03 mm (1.1.2)
   - 리그·메쉬를 바꿀 때만 다시 만듦 (만드는 스크립트 `D:\blender_files\chicken\pack_build\`)
 - `model.xml` · 고정 베이스 · 구조 중앙 자세 = 관절 0 · 고리 3개 = equality connect (옆 로드 L/R → 머리 · 앞 링크 → 목 받침) · 바디 좌표 = 그 자세 월드 (m)
   - 질량 = 부품 메쉬 부피 × 재질 밀도 추정 (강 7850 · 알루미늄 2700 · 출력물 1240) · XM430 82 g · HLS3915M 35 g · 껍데기 PLA 2 mm · 목 실리콘 3 mm · 전체 2.4 kg
@@ -109,6 +113,7 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
 
 - `chicken_motion_composition5.json` · 옛 스택 티칭 CSV `motion-composition5.csv` (71.04 s) 를 리그로 옮긴 것 · **값 0 = 구조 중앙 (1프레임 = 0)** · chicken2 (`http://chicken2.local:8000`) 재생 목록 · 원본 `D:\blender_files\chicken\chicken_motion_composition5.blend`
 - crank_f 가 chicken2 범위 ±23.82° 를 넘던 깊은 구간 5개 (−35 ~ −44.5°) 는 자르지 않고 구간째 비율로 얕게 (×0.52 ~ 0.67 · 바닥 −23.32°) · 구간 안 굴곡·타이밍 그대로 · Blender 는 `Neck_Base` 키만 고침
+- 2026-10-30 앞 링크 실물 반영 (팩 1.1.2) · 모터 값(json 4축)은 그대로 두고 (실물에서 재생 확인한 값 · 원본 CSV 도 실물 녹화값) Blender `Neck_Base` 키만 새 링크로 다시 풀었음 → 목 받침 −15.2 ~ +3.2° 가 −11.0 ~ +1.8° 로 (실물 움직임과 같게) · 다시 내보낸 값 = 이 json (2.4e-5 rad 안) 이라 파일·report 그대로
 - 이전 이름 `_zero` · `_zero_v2` (1프레임 값을 뺀 사본) 는 1.1.0 부터 필요 없음 · 레포·chicken2 에서 지움
 - 원본 CSV 의 튀는 구간(머리 좌우 · crank_f 최대 약 1300 °/s)은 그대로 · 모터 본 속도·가속 상한 속성이 0 이라 내보내기 속도 검사는 안 함
 - `report/` · 내보내기 리포트

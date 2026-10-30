@@ -1,6 +1,9 @@
 name: chicken
-version: "1.1.1"
-created: "2026-10-29"
+version: "1.1.2"
+created: "2026-10-30"
+# 1.1.2 (2026-10-30) · 앞 링크 = 실물대로 · 목 쪽 볼 = 목 받침 위쪽 horn_holder 구멍 (Fusion −8.90, 121.08, 106.806 mm) · 길이 29 → 48.82 mm
+#   (CAD J_Link_F_Neck 아래 블록이 아님 · 실물 확인) · crank_f 1° 에 목 받침 약 0.28° (이전 0.42°) · crank_f ±23.82 = 목 받침 −11.29 ~ +1.93° (0 = −4.43°)
+#   derived 표 1 · model.xml 앞 링크 · 구조 중앙 자세(목 받침 −7.12 → −4.43°)라 목 위쪽 좌표도 바뀜 · 범위·축·애니메이션 값 그대로
 # 1.1.0 (2026-10-29) · 값 0 = 구조 중앙 (모터마다 구조 상한·하한의 가운데 = chicken2 기준점 = composition5 1프레임 자세)
 # Blender 뷰 · 모델만 (애니메이션 없음) · 리그 D:\blender_files\chicken\chicken.blend
 #   joints  · 크랭크 3개 · 머리 좌우 = 애니메이션 값으로 노드 1:1 회전
