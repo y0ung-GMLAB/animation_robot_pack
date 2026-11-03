@@ -84,6 +84,10 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
   - **floating3 조인트 매핑 눈 3축 (`f3_eye_pitch` · `f3_eye_yaw_l` · `f3_eye_yaw_r`) 의 최대 속도 · 가속을 그 파일 값 이상으로 올린 뒤 재생** (그대로면 PC 검사에 걸림)
   - 내보내기 검사 · 오류 0 · MotorLimit 0 · 눈 가속은 상한의 90 % 까지 씀 (경고는 정상)
   - 원본 · `D:\blender_files\floating\test\ny_floating_f3eye_{15,20,25}_15s.blend` (리그 4대 · f3 눈 본 속도 상한 속성도 그 값)
+- `ny_dummy_920s_still` (2026-11-03 · NY 그룹 시작 시험) · **예외 · 4대 20축 모두 들어 있음** (f1~f4 · 조인트 이름은 공연 파일과 같음)
+  - 920 s (46000 프레임 · 25.8 MB) · 공연 파일 `ny_floating_1_look_v1-8-x` 와 크기가 같음 · 재생 준비 시간 시험용 (robot_web 수정 목록 164)
+  - 움직임 · 모든 축 ±0.5° · 60 s 주기 사인 · 최대 0.05 °/s · 시작 자세 0 (눈 몰림 ±2° 없음) · 끝 0.43°
+  - 수정 164 전 코드는 재생 목록 **전체** 계획을 예약 시각 전에 지어서, 이 파일 + 다른 애니 하나를 목록에 넣고 그룹 시작하면 「그룹 예약 시작시각을 놓쳤습니다」 · 「motion_run_manager response timeout」 이 나기 쉬움
 
 ## chicken/chicken_pack
 
