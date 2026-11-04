@@ -36,6 +36,7 @@ chicken/                               → 닭 오브제 (jazzy · RPi 5)
 - 플로팅 4대 나레이션 공연 · 애니메이션마다 조인트 20개 (`f{N}_neck_yaw` …) · 4대 공통 (각 PC 는 자기 `f{N}_*` 만 씀)
 - 로봇 번호 · `Cam_Store` 에서 볼 때 왼쪽부터 f1 KO · f2 ES · f3 FR · f4 DE (2026-10-08)
 - **음원 (2026-10-22 · 새 대사 1 · 2)** · `floating_1.wav` 617.8 s · `floating_2.wav` 596.6 s · 원본 `D:\my_ws\floating\음원 대사\1.mp3` · `2.mp3` (2026-10-21) 를 wav 로 바꾼 것 (44.1 kHz · 모노 · 16 bit · 길이 그대로) · Blender `ny_floating_1*` · `ny_floating_2*` 의 음원 · 애니메이션 json 은 내보내면 같은 폴더에
+- **최종 음원 (2026-11-04)** · `floating_final.wav` 913.1 s (15:13) · 원본 `D:\my_ws\floating\음원 대사\마감 적용_다국어_변조.mp3` (2026-11-02 · 다국어 · 한 파일) 를 wav 로 바꾼 것 (48 kHz 그대로 · 모노 · 16 bit · 길이 그대로) · 짝 애니메이션 = Blender `ny_floating_1_look_v1-8-*` 내보내기 (920 s · 46000 프레임 · 아직 이 폴더에 없음) · 위 `floating_1.wav` · `floating_2.wav` 는 그 전 대사
 - 옛 음원 `floating_narration_all_9min.wav` · `_90s.wav` 는 지움 (2026-10-22 · 사용자 「옛날 거 이제 없어도 돼」) · 아래 옛 json 두 개는 남아 있음
 - `floating_narration_all_9min.json` · 전체 556 s (27801 프레임) · 옛 음원과 짝이던 것
 - `floating_narration_all_90s.json` · 앞 93 s 시안 (4650 프레임 · 9min 의 앞부분과 값 같음) · 옛 음원 앞 93.0 s 와 짝이던 것
